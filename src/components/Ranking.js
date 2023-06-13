@@ -14,7 +14,10 @@ const Ranking = () => {
    
    return (
       <section>
-         {/* <ul>
+         <div className="editButton">
+            <button>Edit</button>
+         </div>
+         {/* <ol>
 
             <li>{listSlots.one}Hey</li>
             <li>{listSlots.two}</li>
@@ -26,8 +29,12 @@ const Ranking = () => {
             <li>{listSlots.eight}</li>
             <li>{listSlots.nine}</li>
             <li>{listSlots.ten}</li>
-         </ul> */}
+         </ol> */}
          <p>HEY!</p>
+         <div className="buttonContainer">
+            <button>Clear List</button>
+            <button>Lock In</button>
+         </div>
       </section>
    )
 }

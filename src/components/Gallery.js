@@ -1,3 +1,5 @@
+import MovieCard from "./MovieCard";
+
 const Gallery = () => {
    return(
       <></>
