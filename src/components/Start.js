@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Start = () => {
   const years = [];
   const [userYear, setUserYear] = useState(null);
+  const navigate = useNavigate();
 
   for (let i=1975; i < 2024; i++) {
     years.push(i);
@@ -13,11 +15,12 @@ const Start = () => {
   const handleYearChange = (event) => {
     setUserYear(event.target.value);
     console.log(setUserYear)
-  }
+  };
   
   const handleStartClick = (event) => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+    navigate(`/Rankings/${userYear}`);
+  };
 
   return (
     <section className="start">
