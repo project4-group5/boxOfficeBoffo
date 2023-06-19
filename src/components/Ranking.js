@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 const Ranking = () => {
+   const navigate = useNavigate();
+   const { userYear } = useParams();
+
+   const handleClick = () => {
+      navigate(`/Gallery/${userYear}`);
+   }
+   
+
    const listSlots = {
       one: "",
       two: "",
@@ -17,19 +28,18 @@ const Ranking = () => {
          <div className="editButton">
             <button>Edit</button>
          </div>
-         {/* <ol>
-
-            <li>{listSlots.one}Hey</li>
-            <li>{listSlots.two}</li>
-            <li>{listSlots.three}</li>
-            <li>{listSlots.four}</li>
-            <li>{listSlots.five}</li>
-            <li>{listSlots.six}</li>
-            <li>{listSlots.seven}</li>
-            <li>{listSlots.eight}</li>
-            <li>{listSlots.nine}</li>
-            <li>{listSlots.ten}</li>
-         </ol> */}
+         <ol>
+            <li onClick={handleClick}>{listSlots.one}Hey</li>
+            <li onClick={handleClick}>{listSlots.two}</li>
+            <li onClick={handleClick}>{listSlots.three}</li>
+            <li onClick={handleClick}>{listSlots.four}</li>
+            <li onClick={handleClick}>{listSlots.five}</li>
+            <li onClick={handleClick}>{listSlots.six}</li>
+            <li onClick={handleClick}>{listSlots.seven}</li>
+            <li onClick={handleClick}>{listSlots.eight}</li>
+            <li onClick={handleClick}>{listSlots.nine}</li>
+            <li onClick={handleClick}>{listSlots.ten}</li>
+         </ol>
          <p>HEY!</p>
          <div className="buttonContainer">
             <button>Clear List</button>
