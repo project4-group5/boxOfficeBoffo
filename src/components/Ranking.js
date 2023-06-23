@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import OrderButtons from "./OrderButtons";
 
-const Ranking = () => {
+const Ranking = (props) => {
    const navigate = useNavigate();
    const { userYear } = useParams();
 
@@ -25,27 +26,27 @@ const Ranking = () => {
 
    return (
       <section>
-         <div className="wrapper">
-            <div className="editButton">
-               <button>Edit</button>
-            </div>
-            <ol>
-               <li onClick={handleClick}>{listSlots.one}Hey</li>
-               <li onClick={handleClick}>{listSlots.two}</li>
-               <li onClick={handleClick}>{listSlots.three}</li>
-               <li onClick={handleClick}>{listSlots.four}</li>
-               <li onClick={handleClick}>{listSlots.five}</li>
-               <li onClick={handleClick}>{listSlots.six}</li>
-               <li onClick={handleClick}>{listSlots.seven}</li>
-               <li onClick={handleClick}>{listSlots.eight}</li>
-               <li onClick={handleClick}>{listSlots.nine}</li>
-               <li onClick={handleClick}>{listSlots.ten}</li>
-            </ol>
-            <p>HEY!</p>
-            <div className="buttonContainer">
-               <button>Clear List</button>
-               <button>Lock In</button>
-            </div>
+         <div>
+            <h2>Highest grossing movies of year {userYear}:</h2>
+         </div>
+         <div className="editButton">
+            <button>Edit</button>
+         </div>
+         <ol>
+            <li><p onClick={handleClick}>{props.userList.one}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.three}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.two}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.four}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.five}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.six}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.seven}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.eight}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.nine}</p><OrderButtons /></li>
+            <li><p onClick={handleClick}>{props.userList.ten}</p><OrderButtons /></li>
+         </ol>
+         <div className="buttonContainer">
+            <button>Clear List</button>
+            <button>Lock In</button>
          </div>
       </section>
    )
