@@ -8,7 +8,7 @@ const Ranking = () => {
    const handleClick = () => {
       navigate(`/Gallery/${userYear}`);
    }
-   
+
 
    const listSlots = {
       one: "",
@@ -22,28 +22,30 @@ const Ranking = () => {
       nine: "",
       ten: ""
    }
-   
+
    return (
       <section>
-         <div className="editButton">
-            <button>Edit</button>
-         </div>
-         <ol>
-            <li onClick={handleClick}>{listSlots.one}Hey</li>
-            <li onClick={handleClick}>{listSlots.two}</li>
-            <li onClick={handleClick}>{listSlots.three}</li>
-            <li onClick={handleClick}>{listSlots.four}</li>
-            <li onClick={handleClick}>{listSlots.five}</li>
-            <li onClick={handleClick}>{listSlots.six}</li>
-            <li onClick={handleClick}>{listSlots.seven}</li>
-            <li onClick={handleClick}>{listSlots.eight}</li>
-            <li onClick={handleClick}>{listSlots.nine}</li>
-            <li onClick={handleClick}>{listSlots.ten}</li>
-         </ol>
-         <p>HEY!</p>
-         <div className="buttonContainer">
-            <button>Clear List</button>
-            <button>Lock In</button>
+         <div className="wrapper">
+            <div className="editButton">
+               <button>Edit</button>
+            </div>
+            <ol>
+               <li onClick={handleClick}>{listSlots.one}Hey</li>
+               <li onClick={handleClick}>{listSlots.two}</li>
+               <li onClick={handleClick}>{listSlots.three}</li>
+               <li onClick={handleClick}>{listSlots.four}</li>
+               <li onClick={handleClick}>{listSlots.five}</li>
+               <li onClick={handleClick}>{listSlots.six}</li>
+               <li onClick={handleClick}>{listSlots.seven}</li>
+               <li onClick={handleClick}>{listSlots.eight}</li>
+               <li onClick={handleClick}>{listSlots.nine}</li>
+               <li onClick={handleClick}>{listSlots.ten}</li>
+            </ol>
+            <p>HEY!</p>
+            <div className="buttonContainer">
+               <button>Clear List</button>
+               <button>Lock In</button>
+            </div>
          </div>
       </section>
    )

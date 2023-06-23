@@ -6,8 +6,8 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const navigate = useNavigate();
-    console.log( movieInfo)
-    
+    console.log(movieInfo)
+
     useEffect(() => {
         axios({
             url: `https://api.themoviedb.org/3/movie/${props.id}`,
@@ -25,7 +25,7 @@ const MovieCard = (props) => {
 
         })
 
-    },[])
+    }, [])
 
     const handleClickInfo = () => {
         console.log('it works');
@@ -37,7 +37,7 @@ const MovieCard = (props) => {
 
     return (
         movieInfo !== []
-            ? ( <li>
+            ? (<li>
                 <div className="imageContainer">
                     <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
                 </div>
@@ -46,8 +46,8 @@ const MovieCard = (props) => {
                     <button onClick={handleClickInfo}>ⓘ</button>
                     <button>+</button>
                 </div>
-            </li> ) 
-            : <></> 
+            </li>)
+            : <></>
     )
 }
 

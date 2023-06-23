@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Gallery = () => {
    const { userYear } = useParams();
-   const [ movieList, setMovieList ] = useState([]);
+   const [movieList, setMovieList] = useState([]);
 
    console.log(userYear);
 
@@ -51,17 +51,19 @@ const Gallery = () => {
 
    return (
       <section>
-         <ul>
-            {
-               movieList.map((movie) => {
-                  return (
-                     <MovieCard id={movie.id}/>
-                  )
-               })
+         <div className="wrapper">
+            <ul>
+               {
+                  movieList.map((movie) => {
+                     return (
+                        <MovieCard id={movie.id} />
+                     )
+                  })
 
 
-            }
-         </ul>
+               }
+            </ul>
+         </div>
       </section>
    )
 }

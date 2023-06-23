@@ -23,7 +23,7 @@ const Start = () => {
   };
 
   return (
-    <section className="start">
+    <section className="start wrapper">
       <p>Game where you rank the highest grossing movies of the summer!</p>
       <form>
         <label htmlFor="years">Select a year</label>
