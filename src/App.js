@@ -9,6 +9,7 @@ import MovieDetails from './components/MovieDetails';
 import { useState } from 'react';
 
 function App() {
+  const [ movieSlot , setMovieSlot ] = useState("")
 
   const [ userList, setUserList ] = useState(
       {
@@ -30,9 +31,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Start />}/>
-        <Route path="/Rankings/:userYear" element={<Ranking userList={userList} />}/>
-        <Route path="/Gallery/:userYear" element={<Gallery />}/>
-        <Route path="/MovieDetails/:movieId" element={<MovieDetails />} />
+        <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} onListUpdate={setUserList} onSlotUpdate={setMovieSlot} />}/>
+        <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} onListUpdate={setUserList} onSlotUpdate={setMovieSlot} />}/>
+        <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} onListUpdate={setUserList} onSlotUpdate={setMovieSlot} />} />
       </Routes>
       
       <Footer />

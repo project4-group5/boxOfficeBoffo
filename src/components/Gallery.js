@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-const Gallery = () => {
+const Gallery = (props) => {
    const { userYear } = useParams();
    const [ movieList, setMovieList ] = useState([]);
 
@@ -55,7 +55,7 @@ const Gallery = () => {
             {
                movieList.map((movie) => {
                   return (
-                     <MovieCard id={movie.id}/>
+                     <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} onListUpdate={props.setUserList} onSlotUpdate={props.setMovieSlot} />
                   )
                })
 
