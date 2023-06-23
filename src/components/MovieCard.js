@@ -43,8 +43,8 @@ const MovieCard = (props) => {
                 </div>
                 <div className="buttonContainer">
                     <h2>{movieInfo.title}</h2>
-                    <button onClick={handleClickInfo}>ⓘ</button>
-                    <button>+</button>
+                    <button onClick={handleClickInfo}><i class="fa-solid fa-info"></i></button>
+                    <button><i class="fa-solid fa-plus"></i></button>
                 </div>
             </li>)
             : <></>

@@ -52,6 +52,7 @@ const Gallery = () => {
    return (
       <section>
          <div className="wrapper">
+            
             <ul>
                {
                   movieList.map((movie) => {

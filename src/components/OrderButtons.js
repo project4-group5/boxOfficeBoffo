@@ -1,8 +1,9 @@
 const OrderButtons = () => {
     return (
         <div>
-            <button id="up">Up</button>
-            <button id="down">Down</button>
+            {/* make accessible??? sr-only */}
+            <button id="up"><i class="fa-solid fa-angle-up"></i></button>
+            <button id="down"><i class="fa-solid fa-angle-down"></i></button>
         </div>
     )
 }

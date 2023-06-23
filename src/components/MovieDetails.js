@@ -40,7 +40,7 @@ const MovieDetails = () => {
         <section>
             <div className='wrapper'>
                 <div className="backButton">
-                    <button onClick={handleBackClick}>Back</button>
+                    <button onClick={handleBackClick}><i class="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div className="wrapper">
                     <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
@@ -50,7 +50,7 @@ const MovieDetails = () => {
                     <p>Release date {movie.release_date}</p>
                     <p>Tagline {movie.tagline}</p>
                     <p>Synopsis {movie.overview}</p>
-                    <button>Add to ranking</button>
+                    <button><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
         </section>
