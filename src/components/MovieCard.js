@@ -5,7 +5,6 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
 
-
     useEffect(() => {
         axios({
             url: `https://api.themoviedb.org/3/movie/${props.id}`,
@@ -15,7 +14,8 @@ const MovieCard = (props) => {
                 api_key: "c7d2bc1af674054e4cbfe886c8424b11",
             }
         }).then((res) => {
-            console.log(res);
+            // console.log(res);
+
             setMovieInfo(res);
         })
 
