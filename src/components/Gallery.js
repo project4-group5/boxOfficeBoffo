@@ -59,8 +59,6 @@ const Gallery = () => {
                         <MovieCard id={movie.id} />
                      )
                   })
-
-
                }
             </ul>
          </div>
