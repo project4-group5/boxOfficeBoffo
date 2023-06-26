@@ -33,6 +33,11 @@ const MovieCard = (props) => {
         navigate(`/movieDetails/${props.id}`)
     }
 
+    const handleClickAdd = (movie) => {
+        console.log('added', props.userList, props.movieSlot);
+
+    }
+
     // console.log(movieInfo)
 
     return (
@@ -44,7 +49,7 @@ const MovieCard = (props) => {
                 <div className="buttonContainer">
                     <h2>{movieInfo.title}</h2>
                     <button onClick={handleClickInfo}><i class="fa-solid fa-info"></i></button>
-                    <button><i class="fa-solid fa-plus"></i></button>
+                    <button onClick={()=>handleClickAdd(movieInfo.title)}><i class="fa-solid fa-plus"></i></button>
                 </div>
             </li>)
             : <></>
