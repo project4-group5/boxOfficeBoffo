@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap');
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 500px;
+    width: 90%;
+}
+
+html {
+    font-size: 125%;
+}
+
+body {
+    background-color: #FFFDF7;
+    color: #0A171F;
+    font-family: 'Baloo 2', cursive;
+}
+
+
+
+/* Colours
+Yellow - #FDD85D
+White - #FFFDF7
+Pale Blue - #99D6EA
+Mid Blue - #6798C0
+Dark Blue - #0A171F
+
+*/

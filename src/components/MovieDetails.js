@@ -19,11 +19,9 @@ const MovieDetails = (props) => {
     }
 
     const handleAddClick = () => {
-            const copyList = { ...props.userList };
+            const copyList = [ ...props.userList ];
             copyList[props.movieSlot] = movie.title;
-            console.log(copyList[props.movieSlot]);
             props.setUserList(copyList);
-            console.log('added', copyList);
 
             let year = "";
             for (let i = 0; i < 4; i++) {
@@ -54,18 +52,20 @@ const MovieDetails = (props) => {
 
     return(
         <section>
-            <div className="backButton">
-                <button onClick={handleBackClick}>Back</button>
-            </div>
-            <div className="wrapper">
-                <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
-            </div>
-            <div className="movieTitle">             
-                <h2>Title { movie.title }</h2>
-                <p>Release date { movie.release_date }</p>
-                <p>Tagline {movie.tagline}</p>
-                <p>Synopsis {movie.overview}</p>
-                <button onClick={handleAddClick}>Add to ranking</button>
+            <div className='wrapper'>
+                <div className="backButton">
+                    <button onClick={handleBackClick}><i class="fa-solid fa-arrow-left"></i></button>
+                </div>
+                <div className="wrapper">
+                    <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
+                </div>
+                <div className="movieTitle">
+                    <h2>Title {movie.title}</h2>
+                    <p>Release date {movie.release_date}</p>
+                    <p>Tagline {movie.tagline}</p>
+                    <p>Synopsis {movie.overview}</p>
+                    <button onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
         </section>
     )

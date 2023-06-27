@@ -6,7 +6,7 @@ import axios from "axios";
 
 const Gallery = (props) => {
    const { userYear } = useParams();
-   const [ movieList, setMovieList ] = useState([]);
+   const [movieList, setMovieList] = useState([]);
 
    console.log(userYear);
 

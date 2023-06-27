@@ -6,6 +6,8 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const navigate = useNavigate();
+
+
     
     useEffect(() => {
         axios({
@@ -22,7 +24,7 @@ const MovieCard = (props) => {
             setMovieInfo(res.data)
         })
 
-    },[])
+    }, [])
 
     const handleClickInfo = () => {
         console.log('it works');
@@ -31,11 +33,9 @@ const MovieCard = (props) => {
     }
 
     const handleClickAdd = () => {
-        const copyList = {...props.userList};
+        const copyList = [...props.userList];
         copyList[props.movieSlot] = movieInfo.title;
-        console.log(copyList[props.movieSlot]);
         props.setUserList(copyList);
-        console.log('added', copyList);
 
         let year = "";
         for (let i=0; i<4; i++) {
@@ -49,17 +49,17 @@ const MovieCard = (props) => {
 
     return (
         movieInfo !== []
-            ? ( <li>
+            ? (<li>
                 <div className="imageContainer">
                     <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
                 </div>
                 <div className="buttonContainer">
                     <h2>{movieInfo.title}</h2>
-                    <button onClick={handleClickInfo}>ⓘ</button>
-                    <button onClick={handleClickAdd}>+</button>
+                    <button onClick={handleClickInfo}><i class="fa-solid fa-info"></i></button>
+                    <button onClick={handleClickAdd}><i class="fa-solid fa-plus"></i></button>
                 </div>
-            </li> ) 
-            : <></> 
+            </li>)
+            : <></>
     )
 }
 
