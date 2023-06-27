@@ -6,10 +6,9 @@ const Ranking = (props) => {
    const navigate = useNavigate();
    const { userYear } = useParams();
 
-   const handleClick = (key) => {
-      props.onSlotUpdate(key);
+   const handleClick = (slot) => {
+      props.setMovieSlot(slot);
       navigate(`/Gallery/${userYear}`);
-      console.log(key)
    }
 
 
@@ -35,16 +34,16 @@ const Ranking = (props) => {
             <button>Edit</button>
          </div>
          <ol>
-            <li><p onClick={()=>handleClick(1)}>{props.userList.one}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(2)}>{props.userList.three}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(3)}>{props.userList.two}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(4)}>{props.userList.four}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(5)}>{props.userList.five}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(6)}>{props.userList.six}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(7)}>{props.userList.seven}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(8)}>{props.userList.eight}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(9)}>{props.userList.nine}</p><OrderButtons /></li>
-            <li><p onClick={()=>handleClick(10)}>{props.userList.ten}</p><OrderButtons /></li>
+            <li><p onClick={()=>handleClick("one")}>{props.userList.one}</p><OrderButtons slot="one"/></li>
+            <li><p onClick={() => handleClick("two")}>{props.userList.two}</p><OrderButtons slot="two" /></li>
+            <li><p onClick={() => handleClick("three")}>{props.userList.three}</p><OrderButtons slot="three" /></li>
+            <li><p onClick={() => handleClick("four")}>{props.userList.four}</p><OrderButtons slot="four" /></li>
+            <li><p onClick={() => handleClick("five")}>{props.userList.five}</p><OrderButtons slot="five" /></li>
+            <li><p onClick={() => handleClick("six")}>{props.userList.six}</p><OrderButtons slot="six" /></li>
+            <li><p onClick={() => handleClick("seven")}>{props.userList.seven}</p><OrderButtons slot="seven" /></li>
+            <li><p onClick={() => handleClick("eight")}>{props.userList.eight}</p><OrderButtons slot="eight" /></li>
+            <li><p onClick={() => handleClick("nine")}>{props.userList.nine}</p><OrderButtons slot="nine" /></li>
+            <li><p onClick={() => handleClick("ten")}>{props.userList.ten}</p><OrderButtons slot="ten" /></li>
          </ol>
          <div className="buttonContainer">
             <button>Clear List</button>

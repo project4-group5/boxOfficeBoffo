@@ -13,7 +13,6 @@ import './styles/baseStyles.css'
 
 function App() {
   const [ movieSlot , setMovieSlot ] = useState("")
-
   const [ userList, setUserList ] = useState(
       {
         one: "Click to add movie",
@@ -34,9 +33,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Start />}/>
-        <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} onListUpdate={setUserList} onSlotUpdate={setMovieSlot} />}/>
-        <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} onListUpdate={setUserList} onSlotUpdate={setMovieSlot} />}/>
-        <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} onListUpdate={setUserList} onSlotUpdate={setMovieSlot} />} />
+        <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} setUserList={setUserList} setMovieSlot={setMovieSlot} />}/>
+        <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} setUserList={setUserList} />}/>
+        <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
       </Routes>
       
       <Footer />

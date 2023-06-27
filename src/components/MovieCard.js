@@ -6,8 +6,9 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const navigate = useNavigate();
-    console.log(movieInfo)
 
+
+    
     useEffect(() => {
         axios({
             url: `https://api.themoviedb.org/3/movie/${props.id}`,
@@ -20,9 +21,7 @@ const MovieCard = (props) => {
             // setTimeout(()=>{
             //     setMovieInfo(res.data);
             // }, 300)
-            console.log(res.data);
             setMovieInfo(res.data)
-
         })
 
     }, [])
@@ -33,9 +32,19 @@ const MovieCard = (props) => {
         navigate(`/movieDetails/${props.id}`)
     }
 
-    const handleClickAdd = (movie) => {
-        console.log('added', props.userList, props.movieSlot);
+    const handleClickAdd = () => {
+        const copyList = {...props.userList};
+        copyList[props.movieSlot] = movieInfo.title;
+        console.log(copyList[props.movieSlot]);
+        props.setUserList(copyList);
+        console.log('added', copyList);
 
+        let year = "";
+        for (let i=0; i<4; i++) {
+            year += movieInfo.release_date[i];
+            console.log(year);
+        }
+        navigate(`/Rankings/${year}`)
     }
 
     // console.log(movieInfo)
@@ -49,7 +58,7 @@ const MovieCard = (props) => {
                 <div className="buttonContainer">
                     <h2>{movieInfo.title}</h2>
                     <button onClick={handleClickInfo}><i class="fa-solid fa-info"></i></button>
-                    <button onClick={()=>handleClickAdd(movieInfo.title)}><i class="fa-solid fa-plus"></i></button>
+                    <button onClick={handleClickAdd}><i class="fa-solid fa-plus"></i></button>
                 </div>
             </li>)
             : <></>
