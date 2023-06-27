@@ -12,32 +12,32 @@ import './styles/setUp.css'
 import './styles/baseStyles.css'
 
 function App() {
-  const [ movieSlot , setMovieSlot ] = useState("")
-  const [ userList, setUserList ] = useState(
-      {
-        one: "Click to add movie",
-        two: "Click to add movie",
-        three: "Click to add movie",
-        four: "Click to add movie",
-        five: "Click to add movie",
-        six: "Click to add movie",
-        seven: "Click to add movie",
-        eight: "Click to add movie",
-        nine: "Click to add movie",
-        ten: "Click to add movie"
-      }
+  const [movieSlot, setMovieSlot] = useState("")
+  const [userList, setUserList] = useState(
+    [
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie"
+    ]
   )
 
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Start />}/>
-        <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} setUserList={setUserList} setMovieSlot={setMovieSlot} />}/>
-        <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} setUserList={setUserList} />}/>
+        <Route path="/" element={<Start />} />
+        <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} setUserList={setUserList} setMovieSlot={setMovieSlot} />} />
+        <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
         <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
       </Routes>
-      
+
       <Footer />
     </>
   );

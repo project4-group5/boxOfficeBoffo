@@ -11,20 +11,6 @@ const Ranking = (props) => {
       navigate(`/Gallery/${userYear}`);
    }
 
-
-   const listSlots = {
-      one: "",
-      two: "",
-      three: "",
-      four: "",
-      five: "",
-      six: "",
-      seven: "",
-      eight: "",
-      nine: "",
-      ten: ""
-   }
-
    return (
       <section>
          <div>
@@ -34,16 +20,16 @@ const Ranking = (props) => {
             <button>Edit</button>
          </div>
          <ol>
-            <li><p onClick={()=>handleClick("one")}>{props.userList.one}</p><OrderButtons slot="one"/></li>
-            <li><p onClick={() => handleClick("two")}>{props.userList.two}</p><OrderButtons slot="two" /></li>
-            <li><p onClick={() => handleClick("three")}>{props.userList.three}</p><OrderButtons slot="three" /></li>
-            <li><p onClick={() => handleClick("four")}>{props.userList.four}</p><OrderButtons slot="four" /></li>
-            <li><p onClick={() => handleClick("five")}>{props.userList.five}</p><OrderButtons slot="five" /></li>
-            <li><p onClick={() => handleClick("six")}>{props.userList.six}</p><OrderButtons slot="six" /></li>
-            <li><p onClick={() => handleClick("seven")}>{props.userList.seven}</p><OrderButtons slot="seven" /></li>
-            <li><p onClick={() => handleClick("eight")}>{props.userList.eight}</p><OrderButtons slot="eight" /></li>
-            <li><p onClick={() => handleClick("nine")}>{props.userList.nine}</p><OrderButtons slot="nine" /></li>
-            <li><p onClick={() => handleClick("ten")}>{props.userList.ten}</p><OrderButtons slot="ten" /></li>
+
+            {
+               props.userList.map((listItem, index) => {
+                  return (
+                  <li key={index}><p onClick={() => handleClick(index)}>{listItem}</p><OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} /></li>
+                  )
+
+               })
+            }
+
          </ol>
          <div className="buttonContainer">
             <button>Clear List</button>

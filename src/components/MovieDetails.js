@@ -19,11 +19,9 @@ const MovieDetails = (props) => {
     }
 
     const handleAddClick = () => {
-            const copyList = { ...props.userList };
+            const copyList = [ ...props.userList ];
             copyList[props.movieSlot] = movie.title;
-            console.log(copyList[props.movieSlot]);
             props.setUserList(copyList);
-            console.log('added', copyList);
 
             let year = "";
             for (let i = 0; i < 4; i++) {
