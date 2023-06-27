@@ -1,8 +1,8 @@
-const OrderButtons = () => {
+const OrderButtons = (props) => {
     return (
         <div>
-            <button id="up">Up</button>
-            <button id="down">Down</button>
+            { props.slot !== "one" && <button id="up">Up</button> }
+            { props.slot !== "ten" && <button id="down">Down</button> }
         </div>
     )
 }
