@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const MovieDetails = () => {
+const MovieDetails = (props) => {
 
     const { movieId } = useParams();
     const [movie, setMovie] = useState([]);
@@ -17,6 +17,22 @@ const MovieDetails = () => {
         }
         navigate(`/Gallery/${year}`)
     }
+
+    const handleAddClick = () => {
+            const copyList = { ...props.userList };
+            copyList[props.movieSlot] = movie.title;
+            console.log(copyList[props.movieSlot]);
+            props.setUserList(copyList);
+            console.log('added', copyList);
+
+            let year = "";
+            for (let i = 0; i < 4; i++) {
+                year += movie.release_date[i];
+                console.log(year);
+            }
+            navigate(`/Rankings/${year}`)
+        }
+    
 
     useEffect(() => {
         axios({
@@ -49,7 +65,7 @@ const MovieDetails = () => {
                 <p>Release date { movie.release_date }</p>
                 <p>Tagline {movie.tagline}</p>
                 <p>Synopsis {movie.overview}</p>
-                <button>Add to ranking</button>
+                <button onClick={handleAddClick}>Add to ranking</button>
             </div>
         </section>
     )
