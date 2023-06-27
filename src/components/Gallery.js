@@ -55,7 +55,7 @@ const Gallery = (props) => {
             {
                movieList.map((movie) => {
                   return (
-                     <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} onListUpdate={props.setUserList} onSlotUpdate={props.setMovieSlot} />
+                     <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} />
                   )
                })
 

@@ -14,7 +14,6 @@ const Start = () => {
   // We're using data binding, which will allow React to know the changes.
   const handleYearChange = (event) => {
     setUserYear(event.target.value);
-    console.log(setUserYear)
   };
   
   const handleStartClick = (event) => {
