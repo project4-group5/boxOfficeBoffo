@@ -14,8 +14,26 @@ const Ranking = (props) => {
    }
 
    const handleEdit = () => {
-      setEdit(!edit)
+      setEdit(!edit);
    }
+
+   const handleClear = () => {
+      console.log('hi');
+      const newVariable = [
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie",
+         "Click to add movie"
+      ]
+      props.setUserList(newVariable);
+   }
+
 
    return (
       <section>
@@ -38,7 +56,7 @@ const Ranking = (props) => {
 
          </ol>
          <div className="buttonContainer">
-            <button>Clear List</button>
+            <button onClick={handleClear}>Clear List</button>
             <button>Lock In</button>
          </div>
       </section>

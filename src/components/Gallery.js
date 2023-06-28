@@ -33,6 +33,14 @@ const Gallery = (props) => {
          console.log(res);
          const newMovieList = res.data.results;
 
+         newMovieList.forEach((movie, index)=>{
+            props.userList.forEach((userMovie) => {
+               if (userMovie === movie.title) {
+                  newMovieList.splice(index, 1);
+               }
+            })
+         })
+
          //sorts the movie names alphabetically
          newMovieList.sort((a, b) => {
             const movieA = a.title.toUpperCase(); // ignore upper and lowercase
