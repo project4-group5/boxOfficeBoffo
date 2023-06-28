@@ -7,6 +7,8 @@ import axios from "axios";
 const Gallery = (props) => {
    const { userYear } = useParams();
    const [movieList, setMovieList] = useState([]);
+   const navigate = useNavigate();
+
 
    console.log(userYear);
 
@@ -49,8 +51,13 @@ const Gallery = (props) => {
       });
    }, [userYear]);
 
+   const handleBackClick = () => {
+      navigate(`/Rankings/${userYear}`)
+   }
+
    return (
       <section>
+         <button onClick={handleBackClick}>Back</button>
          <ul>
             {
                movieList.map((movie) => {
