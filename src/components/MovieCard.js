@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import '../styles/movieCard.css';
+
 const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
@@ -49,7 +51,7 @@ const MovieCard = (props) => {
 
     return (
         movieInfo !== []
-            ? (<li>
+            ? (<li className="movieCard">
                 <div className="imageContainer">
                     <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
                 </div>

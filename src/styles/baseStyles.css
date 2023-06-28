@@ -2,7 +2,7 @@
 
 .wrapper {
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 700px;
     width: 90%;
 }
 
@@ -11,9 +11,18 @@ html {
 }
 
 body {
-    background-color: #FFFDF7;
+    background-color: #BBE7F5;
     color: #0A171F;
     font-family: 'Baloo 2', cursive;
+}
+
+img {
+    max-width: 100%;
+}
+
+.glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(7px);
 }
 
 
