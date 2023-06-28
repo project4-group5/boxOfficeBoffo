@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import OrderButtons from "./OrderButtons";
 import { useState } from 'react';
+import { getDatabase, ref, push } from "firebase/database";
+import firebase from "../firebase";
 
 const Ranking = (props) => {
    const navigate = useNavigate();
@@ -34,6 +36,28 @@ const Ranking = (props) => {
       props.setUserList(newVariable);
    }
 
+   const handleLockClick = () => {
+      //getting the database and creating a reference to it
+      const database = getDatabase(firebase);
+      const dbRef = ref(database);
+
+      //prompting the user to enter their name
+      let userName = prompt("please enter  your name")
+   
+      //creating an object which will be stored in firebase
+      const firebaseEntry = {
+         year: userYear,
+         list: props.userList,
+         name: userName
+      }
+
+      //pushing the firebaseEntry object into firebase
+      const dbPush = push(dbRef, firebaseEntry);
+      console.log(dbPush);
+      console.log(dbPush._path)
+      console.log(dbPush._path.pieces_);
+      navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}`);
+   }
 
    return (
       <section>
@@ -57,7 +81,7 @@ const Ranking = (props) => {
          </ol>
          <div className="buttonContainer">
             <button onClick={handleClear}>Clear List</button>
-            <button>Lock In</button>
+            <button onClick={handleLockClick}>Lock In</button>
          </div>
       </section>
    )
