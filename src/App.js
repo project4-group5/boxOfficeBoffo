@@ -26,7 +26,8 @@ function App() {
       "Click to add movie",
       "Click to add movie"
     ]
-  )
+    )
+    
 
   return (
     <>
