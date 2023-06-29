@@ -35,13 +35,22 @@ const Gallery = (props) => {
          console.log(res);
          const newMovieList = res.data.results;
 
-         newMovieList.forEach((movie, index) => {
-            props.userList.forEach((userMovie) => {
-               if (userMovie === movie.title) {
+         props.userList.forEach((userMovie) => {
+            newMovieList.forEach((apiMovie, index) => {
+               if (userMovie === apiMovie.title) {
+
                   newMovieList.splice(index, 1);
                }
             })
          })
+
+         // newMovieList.forEach((movie, index)=>{
+         //    props.userList.forEach((userMovie) => {
+         //       if (userMovie === movie.title) {
+         //          newMovieList.splice(index, 1);
+         //       }
+         //    })
+         // })
 
          //sorts the movie names alphabetically
          newMovieList.sort((a, b) => {
