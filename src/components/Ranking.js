@@ -41,22 +41,35 @@ const Ranking = (props) => {
       const database = getDatabase(firebase);
       const dbRef = ref(database);
 
-      //prompting the user to enter their name
-      let userName = prompt("please enter  your name")
-   
-      //creating an object which will be stored in firebase
-      const firebaseEntry = {
-         year: userYear,
-         list: props.userList,
-         name: userName
-      }
+      //forbid users to edit the list after lock in button is clicked on
+      let isListComplete = true;
+         for(let i = 0; i < 10; i++) {
+            //"i" refers to each individual slot of the userList
+            if (props.userList[i] == "Click to add movie") {
+               alert("Please add 10 movies before locking your list in!")
+               isListComplete = false
+               break
+            }
+         }
 
-      //pushing the firebaseEntry object into firebase
-      const dbPush = push(dbRef, firebaseEntry);
-      console.log(dbPush);
-      console.log(dbPush._path)
-      console.log(dbPush._path.pieces_);
-      navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}`);
+         if (isListComplete === true) {
+            //prompting the user to enter their name
+            let userName = prompt("please enter your name")
+
+            //creating an object which will be stored in firebase
+            const firebaseEntry = {
+               year: userYear,
+               list: props.userList,
+               name: userName
+            }
+
+            //pushing the firebaseEntry object into firebase
+            const dbPush = push(dbRef, firebaseEntry);
+            console.log(dbPush);
+            console.log(dbPush._path)
+            console.log(dbPush._path.pieces_);
+            navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}`);
+         }     
    }
 
    return (
@@ -78,12 +91,12 @@ const Ranking = (props) => {
 
                   })
                }
+            </ol>
 
-
-         </ol>
-         <div className="buttonContainer">
-            <button onClick={handleClear}>Clear List</button>
-            <button onClick={handleLockClick}>Lock In</button>
+            <div className="buttonContainer">
+               <button onClick={handleClear}>Clear List</button>
+               <button onClick={handleLockClick}>Lock In</button>
+            </div>
          </div>
       </section>
    )
