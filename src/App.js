@@ -9,8 +9,8 @@ import MovieDetails from './components/MovieDetails';
 import { useState } from 'react';
 
 // styles
-import './styles/setUp.css'
-import './styles/baseStyles.css'
+import './styles/setUp.css';
+import './styles/baseStyles.css';
 
 function App() {
   const [movieSlot, setMovieSlot] = useState("")

@@ -92,7 +92,6 @@ const Ranking = (props) => {
                   })
                }
             </ol>
-
             <div className="buttonContainer">
                <button onClick={handleClear}>Clear List</button>
                <button onClick={handleLockClick}>Lock In</button>

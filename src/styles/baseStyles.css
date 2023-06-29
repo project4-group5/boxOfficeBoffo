@@ -25,6 +25,25 @@ img {
     backdrop-filter: blur(7px);
 }
 
+/* removing extra margin on text*/
+/* h1, h2, p{
+    margin: 0;
+} */
+
+
+h2 {
+    text-align: center;
+}
+
+button {
+    /* border: 5px solid #0A171F; */
+    border: none;
+    border-radius: 40px;
+    color: #0A171F;
+    background-color: #99D6EA;
+    padding: 10px 12px;
+}
+
 
 
 /* Colours
