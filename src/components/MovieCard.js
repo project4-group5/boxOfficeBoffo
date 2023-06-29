@@ -8,8 +8,10 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
+        setLoading(true)
         axios({
             url: `https://api.themoviedb.org/3/movie/${props.id}`,
             method: "GET",
@@ -22,6 +24,7 @@ const MovieCard = (props) => {
             //     setMovieInfo(res.data);
             // }, 300)
             setMovieInfo(res.data)
+            setLoading(false);
         })
 
     }, [])
@@ -47,19 +50,23 @@ const MovieCard = (props) => {
 
     // console.log(movieInfo)
 
-    return (
-        movieInfo !== []
-            ? (<li className="movieCard">
-                <div className="imageContainer">
-                    <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
-                </div>
-                <h2>{movieInfo.title}</h2>
-                <div className="buttonContainer">
-                    <button onClick={handleClickInfo}><i class="fa-solid fa-circle-info"></i></button>
-                    <button onClick={handleClickAdd}><i className="fa-solid fa-plus"></i></button>
-                </div>
-            </li>)
-            : <></>
+    return (   
+        <>
+            {loading ? <div>loading</div> : movieInfo !== []
+                ? (<li className="movieCard">
+                    <div className="imageContainer">
+                        <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
+                    </div>
+                    <h2>{movieInfo.title}</h2>
+                    <div className="buttonContainer">
+                        <button onClick={handleClickInfo}><i class="fa-solid fa-circle-info"></i></button>
+                        <button onClick={handleClickAdd}><i className="fa-solid fa-plus"></i></button>
+                    </div>
+                </li>)
+                : <></>}
+
+        
+        </>
     )
 }
 
