@@ -8,7 +8,7 @@ import firebase from "../firebase";
 const Ranking = (props) => {
    const navigate = useNavigate();
    const { userYear } = useParams();
-   const [ edit, setEdit ] = useState(false);
+   const [edit, setEdit] = useState(false);
 
    const handleClick = (slot) => {
       props.setMovieSlot(slot);
@@ -61,22 +61,24 @@ const Ranking = (props) => {
 
    return (
       <section>
-         <div>
-            <h2>Highest grossing movies of year {userYear}:</h2>
-         </div>
-         <div className="editButton">
-            <button onClick={handleEdit}>{ edit ? "Save" : "Edit" }</button>
-         </div>
-         <ol>
+         <div className="wrapper">
+            <div>
+               <h2>Highest grossing movies of year {userYear}:</h2>
+            </div>
+            <div className="editButton">
+               <button onClick={handleEdit}>{edit ? "Save" : "Edit"}</button>
+            </div>
+            <ol>
 
-            {
-               props.userList.map((listItem, index) => {
-                  return (
-                     <li key={index}><p onClick={() => handleClick(index)}>{listItem}</p>{edit && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
-                  )
+               {
+                  props.userList.map((listItem, index) => {
+                     return (
+                        <li key={index}><p onClick={() => handleClick(index)}>{listItem}</p>{edit && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
+                     )
 
-               })
-            }
+                  })
+               }
+
 
          </ol>
          <div className="buttonContainer">

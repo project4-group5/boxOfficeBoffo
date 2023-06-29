@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import '../styles/gallery.css';
+
 
 const Gallery = (props) => {
    const { userYear } = useParams();
@@ -36,6 +38,7 @@ const Gallery = (props) => {
          props.userList.forEach((userMovie) => {
             newMovieList.forEach((apiMovie, index) => {
                if (userMovie === apiMovie.title) {
+
                   newMovieList.splice(index, 1);
                }
             })
@@ -73,18 +76,18 @@ const Gallery = (props) => {
 
    return (
       <section>
-         <button onClick={handleBackClick}>Back</button>
-         <ul>
-            {
-               movieList.map((movie) => {
-                  return (
-                     <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} />
-                  )
-               })
-
-
-            }
-         </ul>
+         <div className="wrapper">
+            <button onClick={handleBackClick}>Back</button>
+            <ul className="gallery glass">
+               {
+                  movieList.map((movie) => {
+                     return (
+                        <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} />
+                     )
+                  })
+               }
+            </ul>
+         </div>
       </section>
    )
 }
