@@ -25,6 +25,15 @@ img {
     backdrop-filter: blur(7px);
 }
 
+button {
+    /* border: 5px solid #0A171F; */
+    border: none;
+    border-radius: 40px;
+    color: #0A171F;
+    background-color: #99D6EA;
+    padding: 10px;
+}
+
 
 
 /* Colours

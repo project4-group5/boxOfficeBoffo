@@ -8,8 +8,6 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const navigate = useNavigate();
-
-
     
     useEffect(() => {
         axios({
@@ -55,8 +53,8 @@ const MovieCard = (props) => {
                 <div className="imageContainer">
                     <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
                 </div>
+                <h2>{movieInfo.title}</h2>
                 <div className="buttonContainer">
-                    <h2>{movieInfo.title}</h2>
                     <button onClick={handleClickInfo}><i class="fa-solid fa-info"></i></button>
                     <button onClick={handleClickAdd}><i class="fa-solid fa-plus"></i></button>
                 </div>

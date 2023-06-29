@@ -1,8 +1,12 @@
-.movieCard{
+.movieCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     width: 45%;
     padding: 20px;
     margin: 10px 0;
-    border-radius: 20px;
+    border-radius: 30px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
     box-shadow: 6px 6px 20px rgba(102, 125, 138, 0.2);
 }
@@ -10,4 +14,14 @@
 .imageContainer img {
     border-radius: 20px;
     box-shadow: 6px 6px 10px rgba(102, 125, 138, 0.2);
+}
+
+.movieCard h2 {
+    margin: 10px 0;
+}
+
+.movieCard .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
