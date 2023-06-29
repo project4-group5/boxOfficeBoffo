@@ -43,7 +43,7 @@ const Ranking = (props) => {
 
       //prompting the user to enter their name
       let userName = prompt("please enter  your name")
-   
+
       //creating an object which will be stored in firebase
       const firebaseEntry = {
          year: userYear,
@@ -80,10 +80,11 @@ const Ranking = (props) => {
                }
 
 
-         </ol>
-         <div className="buttonContainer">
-            <button onClick={handleClear}>Clear List</button>
-            <button onClick={handleLockClick}>Lock In</button>
+            </ol>
+            <div className="buttonContainer">
+               <button onClick={handleClear}>Clear List</button>
+               <button onClick={handleLockClick}>Lock In</button>
+            </div>
          </div>
       </section>
    )

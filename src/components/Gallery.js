@@ -77,7 +77,7 @@ const Gallery = (props) => {
    return (
       <section>
          <div className="wrapper">
-            <button onClick={handleBackClick}>Back</button>
+            <button onClick={handleBackClick}><i class="fa-solid fa-arrow-left"></i></button>
             <ul className="gallery glass">
                {
                   movieList.map((movie) => {

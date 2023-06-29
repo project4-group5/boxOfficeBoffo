@@ -2,6 +2,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import '../styles/movieDetails.css';
+
 const MovieDetails = (props) => {
 
     const { movieId } = useParams();
@@ -51,19 +53,19 @@ const MovieDetails = (props) => {
     }, [])
 
     return(
-        <section>
-            <div className='wrapper'>
+        <section className='movieDetails'>
+            <div className='wrapper glass flexContainer'>
                 <div className="backButton">
-                    <button onClick={handleBackClick}><i class="fa-solid fa-arrow-left"></i></button>
+                    <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
-                <div className="wrapper">
+                <div className="imageContainer">
                     <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
                 </div>
                 <div className="movieTitle">
-                    <h2>Title {movie.title}</h2>
-                    <p>Release date {movie.release_date}</p>
-                    <p>Tagline {movie.tagline}</p>
-                    <p>Synopsis {movie.overview}</p>
+                    <h2>{movie.title}</h2>
+                    <p><span>Release date:</span> {movie.release_date}</p>
+                    <p><span>Tagline:</span> {movie.tagline}</p>
+                    <p><span>Synopsis:</span> {movie.overview}</p>
                     <button onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
