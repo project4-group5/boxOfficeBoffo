@@ -68,7 +68,7 @@ const Ranking = (props) => {
             console.log(dbPush);
             console.log(dbPush._path)
             console.log(dbPush._path.pieces_);
-            navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}`);
+            navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}/${userYear}`);
          }     
    }
 
