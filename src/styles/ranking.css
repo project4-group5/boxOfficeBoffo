@@ -16,3 +16,7 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 100%);
     box-shadow: 6px 6px 20px rgba(102, 125, 138, 0.2);
 }
+
+.ranking .buttonContainer button {
+    margin-right: 10px;
+}

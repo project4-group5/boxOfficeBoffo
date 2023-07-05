@@ -32,9 +32,20 @@ img {
     margin: 0;
 } */
 
-
 h2 {
     text-align: center;
+    font-size: clamp(1rem, 5vw, 1.6rem);
+    font-weight: 700;
+}
+
+h3 {
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
+    font-weight: 500;
+}
+
+p {
+    margin: 10px 0;
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
 }
 
 button {
@@ -44,8 +55,23 @@ button {
     color: #0A171F;
     background-color: #99D6EA;
     padding: 10px 12px;
+    font-size: clamp(0.8rem, 4vw, 1rem);
+
 }
 
+@media (max-width: 500px) {
+    .glass {
+        padding: 10px;
+        border-radius: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    button {
+        padding: 10px 12px;
+    }
+
+}
 
 /* Colours
 Yellow - #FDD85D
@@ -53,5 +79,4 @@ White - #FFFDF7
 Pale Blue - #99D6EA
 Mid Blue - #6798C0
 Dark Blue - #0A171F
-
 */

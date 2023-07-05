@@ -37,7 +37,7 @@ const Start = () => {
           <div className="input">
             <label htmlFor="years">Select a year:</label>
             <select className="years" id="years" name="years" onChange={handleYearChange}>
-              <option value="choose" selected>Please choose a Year</option>
+              <option value="choose" selected>Please choose a year</option>
               {years.map((year) => {
                 return (
                   <option value={year} key={year}>
