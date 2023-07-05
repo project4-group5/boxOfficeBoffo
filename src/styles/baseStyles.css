@@ -28,9 +28,11 @@ img {
 }
 
 /* removing extra margin on text*/
-/* h1, h2, p{
+h1,
+h2,
+p {
     margin: 0;
-} */
+}
 
 h2 {
     text-align: center;
@@ -46,6 +48,10 @@ h3 {
 p {
     margin: 10px 0;
     font-size: clamp(0.8rem, 4vw, 1.2rem);
+}
+
+li {
+    font-size: clamp(0.8rem, 5vw, 1.2rem);
 }
 
 button {
