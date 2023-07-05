@@ -90,7 +90,7 @@ const PersonalizedList = (props) => {
         }
         console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}` )
       })
-      return `Your score is ${score}`;
+      return `Your score is ${score}/100`;
   }
 
   const handleRestart = () => {
