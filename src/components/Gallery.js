@@ -10,13 +10,13 @@ const Gallery = (props) => {
    const { userYear } = useParams();
    const [movieList, setMovieList] = useState([]);
    const navigate = useNavigate();
-   const [loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState(true);
 
 
    console.log(userYear);
 
    useEffect(() => {
-      setLoading(true);
+      
       axios({
          url: "https://api.themoviedb.org/3/discover/movie",
          method: "GET",

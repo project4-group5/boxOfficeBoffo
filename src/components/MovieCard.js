@@ -8,10 +8,10 @@ const MovieCard = (props) => {
 
     const [movieInfo, setMovieInfo] = useState([]);
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-        setLoading(true)
+
         axios({
             url: `https://api.themoviedb.org/3/movie/${props.id}`,
             method: "GET",
@@ -54,7 +54,7 @@ const MovieCard = (props) => {
         <>
             {loading ? <div>loading</div> : movieInfo !== []
                 ? (<li className="movieCard">
-                    <div className="imageContainer">
+                    <div className="imageContainer" onClick={handleClickInfo}>
                         <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
                     </div>
                     <h2>{movieInfo.title}</h2>
