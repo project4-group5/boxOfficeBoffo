@@ -74,7 +74,7 @@ const Gallery = (props) => {
    return (
       <section>
          <div className="wrapper">
-            <button onClick={handleBackClick}><i class="fa-solid fa-arrow-left"></i></button>
+            <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
             {loading 
             ? 
             <>Loading...</> 
