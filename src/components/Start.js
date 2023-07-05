@@ -14,12 +14,18 @@ const Start = () => {
 
   // We're using data binding, which will allow React to know the changes.
   const handleYearChange = (event) => {
+
     setUserYear(event.target.value);
   };
 
   const handleStartClick = (event) => {
     event.preventDefault();
-    navigate(`/Rankings/${userYear}`);
+    // if user has not selected a year, give alert
+    if (userYear === null) {
+      alert('Please select a year first');
+    } else {
+      navigate(`/Rankings/${userYear}`);
+    }
   };
 
   return (
@@ -31,6 +37,7 @@ const Start = () => {
           <div className="input">
             <label htmlFor="years">Select a year:</label>
             <select className="years" id="years" name="years" onChange={handleYearChange}>
+              <option value="choose" selected>Please choose a Year</option>
               {years.map((year) => {
                 return (
                   <option value={year} key={year}>

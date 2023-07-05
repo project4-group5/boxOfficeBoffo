@@ -20,7 +20,7 @@ const OrderButtons = (props) => {
 
     const deleteButton = (index) => {
         const newArray = [...props.userList];
-        newArray[index] = "Click here to add a movie"
+        newArray[index] = "Click to add movie"
         props.setUserList(newArray);
         // console.log(newArray)
     }

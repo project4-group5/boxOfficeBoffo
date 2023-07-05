@@ -47,7 +47,7 @@ const Ranking = (props) => {
       let isListComplete = true;
          for(let i = 0; i < 10; i++) {
             //"i" refers to each individual slot of the userList
-            if (props.userList[i] == "Click to add movie") {
+            if (props.userList[i] === "Click to add movie") {
                alert("Please add 10 movies before locking your list in!")
                isListComplete = false
                break
