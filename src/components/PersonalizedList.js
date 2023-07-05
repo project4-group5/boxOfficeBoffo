@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
 import axios from "axios";
 
+
 import '../styles/personalizedLists.css'
 
-const PersonalizedList = () => {
+const PersonalizedList = (props) => {
+
 
   const [actualRanking, setActualRanking] = useState([]);
   const [personalRanking, setPersonalRanking] = useState([]);
   const { personalKey, userYear } = useParams();
   console.log(personalKey, userYear)
+  const navigate = useNavigate();
 
 
 
@@ -93,6 +96,24 @@ const PersonalizedList = () => {
       console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
     return `Your score is ${score}`;
+  }
+
+  const handleRestart = () => {
+    const newVariable = [
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie",
+      "Click to add movie"
+    ]
+    props.setUserList(newVariable);
+    navigate(`/`)
+
   }
 
   return (
