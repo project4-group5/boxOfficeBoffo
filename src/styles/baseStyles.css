@@ -23,6 +23,8 @@ img {
 .glass {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
     backdrop-filter: blur(7px);
+    border-radius: 40px;
+    padding: 20px;
 }
 
 /* removing extra margin on text*/

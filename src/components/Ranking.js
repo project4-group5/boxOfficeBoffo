@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { getDatabase, ref, push } from "firebase/database";
 import firebase from "../firebase";
 
+import '../styles/ranking.css'
+
 const Ranking = (props) => {
    const navigate = useNavigate();
    const { userYear } = useParams();
@@ -73,8 +75,8 @@ const Ranking = (props) => {
    }
 
    return (
-      <section>
-         <div className="wrapper">
+      <section className="ranking">
+         <div className="wrapper glass">
             <div>
                <h2>Highest grossing movies of year {userYear}:</h2>
             </div>
