@@ -38,7 +38,7 @@ function App() {
         <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} setUserList={setUserList} setMovieSlot={setMovieSlot} />} />
         <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
         <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
-        <Route path="/PersonalizedList/personalKey" element={<PersonalizedList />} />
+        <Route path="/PersonalizedList/:personalKey/:userYear" element={<PersonalizedList />} />
       </Routes>
 
       <Footer />

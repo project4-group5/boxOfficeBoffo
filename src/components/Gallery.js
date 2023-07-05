@@ -34,6 +34,8 @@ const Gallery = (props) => {
             with_original_language: "en",
          },
       }).then((res) => {
+         
+          
          console.log(res);
          const newMovieList = res.data.results;
 
