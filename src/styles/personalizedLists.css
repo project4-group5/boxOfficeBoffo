@@ -1,0 +1,30 @@
+.persoList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.persoList ol {
+    list-style-position: inside;
+}
+
+.persoList .score {
+    width: 100%;
+}
+
+.persoList .flexContainer {
+    width: 48%;
+}
+
+@media (max-width: 500px) {
+.persoList .flexContainer {
+        width: 100%;
+}
+
+.persoList .glass {
+    padding: 20px;
+}
+
+}
