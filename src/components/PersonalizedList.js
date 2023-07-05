@@ -4,7 +4,11 @@ import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
 import axios from "axios";
 
+
+import '../styles/personalizedLists.css'
+
 const PersonalizedList = (props) => {
+
 
   const [actualRanking, setActualRanking] = useState([]);
   const [personalRanking, setPersonalRanking] = useState([]);
@@ -19,22 +23,22 @@ const PersonalizedList = (props) => {
     const dbRef = ref(database);
 
     get(dbRef).then((snapshot) => {
-    // One of the returned values is a method called ".exists()", which will return a boolean value for whether there is a returned value from our "get" function 
-    if(snapshot.exists()){
-      // We call `.val()` on our snapshot to get the contents of our data. The returned data will be an object that we can  iterate through later
-      const allLists = snapshot.val()
-      for (let dbKey in allLists) {
-        if (dbKey === personalKey){
-          console.log(allLists[dbKey].list);
-          setPersonalRanking(allLists[dbKey].list);
+      // One of the returned values is a method called ".exists()", which will return a boolean value for whether there is a returned value from our "get" function 
+      if (snapshot.exists()) {
+        // We call `.val()` on our snapshot to get the contents of our data. The returned data will be an object that we can  iterate through later
+        const allLists = snapshot.val()
+        for (let dbKey in allLists) {
+          if (dbKey === personalKey) {
+            console.log(allLists[dbKey].list);
+            setPersonalRanking(allLists[dbKey].list);
+          }
         }
+      } else {
+        console.log("No data available")
       }
-    } else {
-      console.log("No data available")
-    }
-  }).catch((error) => {
-    console.log(error)
-  })
+    }).catch((error) => {
+      console.log(error)
+    })
     axios({
       url: "https://api.themoviedb.org/3/discover/movie",
       method: "GET",
@@ -53,44 +57,47 @@ const PersonalizedList = (props) => {
       },
     }).then((res) => {
       const actualList = [];
-      for (let i=0; i < 10; i++){
+      for (let i = 0; i < 10; i++) {
         actualList.push(res.data.results[i].title)
       }
       console.log(actualList);
       setActualRanking(actualList);
-    })}, [])
+    })
+  }, [])
 
   const score = () => {
-      //scorecard
-      let score = 0;
-      personalRanking.forEach((userMovie, userIndex) => {
-        let difference = 100
-        actualRanking.forEach((actualMovie, actualIndex) => {
-          if (userMovie === actualMovie) {
-            difference = Math.abs(userIndex - actualIndex)
-            console.log("inside the if statement")
-          }
-        })
-        
-        switch (difference) {
-          case 0:
-            score += 10;
-            break;
-          case 1:
-            score += 7;
-            break;
-          case 2:
-            score += 5;
-            break;
-          case 100:
-            score += 0;
-            break;
-          default:
-            score += 1;
+    //scorecard
+    let score = 0;
+    personalRanking.forEach((userMovie, userIndex) => {
+      let difference = 100
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          difference = Math.abs(userIndex - actualIndex)
+          console.log("inside the if statement")
         }
-        console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}` )
       })
-      return `Your score is ${score}/100`;
+
+
+      switch (difference) {
+        case 0:
+          score += 10;
+          break;
+        case 1:
+          score += 7;
+          break;
+        case 2:
+          score += 5;
+          break;
+        case 100:
+          score += 0;
+          break;
+        default:
+          score += 1;
+      }
+      console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
+    })
+    return `Your score is ${score}/100`;
+
   }
 
   const handleRestart = () => {
@@ -112,31 +119,38 @@ const PersonalizedList = (props) => {
   }
 
   return (
-    <>
-      <h2>This is your personal list</h2>
-      <ul>
-        {personalRanking.map((movie) => {
-          return (
-            <li>
-              {movie}
-            </li>
-          )
-        })}
-      </ul>
-      <h2>This is the actual list</h2>
-      <ul>
-        {actualRanking.map((movie) => {
-          return (
-            <li>
-              {movie}
-            </li>
-          )
-        })}
-      </ul>
-      {personalRanking && actualRanking && score()}
+    
+    <div className="wrapper persoList">
+      
+      {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
 
-      <button onClick={handleRestart}>Start new game</button>
-    </>
+      <div className="flexContainer">
+        <h2>Your List</h2>
+        <ol className="glass">
+          {personalRanking.map((movie) => {
+            return (
+              <li>
+                {movie}
+              </li>
+            )
+          })}
+        </ol>
+      </div>
+
+      <div className="flexContainer">
+        <h2>Answer</h2>
+        <ol className="glass">
+          {actualRanking.map((movie) => {
+            return (
+              <li>
+                {movie}
+              </li>
+            )
+          })}
+        </ol>
+      </div>
+
+    </div>
   )
 }
 
