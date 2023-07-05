@@ -58,7 +58,10 @@ const Ranking = (props) => {
             //prompting the user to enter their name
             let userName = prompt("please enter your name")
 
-            //creating an object which will be stored in firebase
+            if (userName === null || userName === "") {
+               alert("Please enter your name and press OK")
+            } else {
+                //creating an object which will be stored in firebase
             const firebaseEntry = {
                year: userYear,
                list: props.userList,
@@ -71,6 +74,8 @@ const Ranking = (props) => {
             console.log(dbPush._path)
             console.log(dbPush._path.pieces_);
             navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}/${userYear}`);
+            }
+           
          }     
    }
 
@@ -87,7 +92,7 @@ const Ranking = (props) => {
                {
                   props.userList.map((listItem, index) => {
                      return (
-                        <li key={index}><p onClick={() => handleClick(index)}>{listItem}</p>{edit && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
+                        <li key={index}><p onClick={() => handleClick(index)}>{listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
                      )
 
                   })

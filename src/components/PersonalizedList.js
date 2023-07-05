@@ -77,6 +77,7 @@ const PersonalizedList = (props) => {
         }
       })
 
+
       switch (difference) {
         case 0:
           score += 10;
@@ -95,7 +96,8 @@ const PersonalizedList = (props) => {
       }
       console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
-    return `Your score is ${score}`;
+    return `Your score is ${score}/100`;
+
   }
 
   const handleRestart = () => {
