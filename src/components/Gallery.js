@@ -10,11 +10,13 @@ const Gallery = (props) => {
    const { userYear } = useParams();
    const [movieList, setMovieList] = useState([]);
    const navigate = useNavigate();
+   const [loading, setLoading] = useState(false);
 
 
    console.log(userYear);
 
    useEffect(() => {
+      setLoading(true);
       axios({
          url: "https://api.themoviedb.org/3/discover/movie",
          method: "GET",
@@ -32,6 +34,8 @@ const Gallery = (props) => {
             with_original_language: "en",
          },
       }).then((res) => {
+         
+          
          console.log(res);
          const newMovieList = res.data.results;
 
@@ -43,14 +47,6 @@ const Gallery = (props) => {
                }
             })
          })
-
-         // newMovieList.forEach((movie, index)=>{
-         //    props.userList.forEach((userMovie) => {
-         //       if (userMovie === movie.title) {
-         //          newMovieList.splice(index, 1);
-         //       }
-         //    })
-         // })
 
          //sorts the movie names alphabetically
          newMovieList.sort((a, b) => {
@@ -67,6 +63,7 @@ const Gallery = (props) => {
             return 0;
          });
          setMovieList(newMovieList);
+         setLoading(false);
       });
    }, [userYear]);
 
@@ -78,6 +75,10 @@ const Gallery = (props) => {
       <section>
          <div className="wrapper">
             <button onClick={handleBackClick}><i class="fa-solid fa-arrow-left"></i></button>
+            {loading 
+            ? 
+            <>Loading...</> 
+            :            
             <ul className="gallery glass">
                {
                   movieList.map((movie) => {
@@ -86,7 +87,7 @@ const Gallery = (props) => {
                      )
                   })
                }
-            </ul>
+            </ul>}
          </div>
       </section>
    )
