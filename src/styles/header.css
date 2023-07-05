@@ -1,4 +1,7 @@
 header h1 {
     text-align: center;
     margin: 20px 0;
+
+    font-weight: 700;
+    font-size: clamp(1.4rem, 7vw, 2rem);
 }

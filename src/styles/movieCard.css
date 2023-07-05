@@ -25,3 +25,15 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+@media (max-width: 500px) {
+    .movieCard {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .movieCard {
+        width: 100%;
+    }
+}

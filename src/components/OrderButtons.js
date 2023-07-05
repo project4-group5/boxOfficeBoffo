@@ -1,3 +1,5 @@
+import '../styles/orderButtons.css'
+
 const OrderButtons = (props) => {
 
     // moves the item up the list
@@ -26,13 +28,16 @@ const OrderButtons = (props) => {
     }
 
     return (
-        <div>
-            {/* make accessible??? sr-only */}
-            { props.slot !== 0 && <button id="up" onClick={() => (moveUp(props.slot))}><i className="fa-solid fa-angle-up"></i></button> }
-            {props.slot !== 9 && <button id="down" onClick={() => (moveDown(props.slot))}><i className="fa-solid fa-angle-down"></i></button>}
+        <div className="orderButtons">
+
+            <div className='buttonContainer'>
+                {/* make accessible??? sr-only */}
+                {props.slot !== 0 && <button id="up" onClick={() => (moveUp(props.slot))}><i className="fa-solid fa-angle-up"></i></button>}
+                {props.slot !== 9 && <button id="down" onClick={() => (moveDown(props.slot))}><i className="fa-solid fa-angle-down"></i></button>}
+            </div>
 
             {/* creating button to delete a movie from the list */}
-            <button onClick={() => (deleteButton(props.slot))}>Remove</button>
+            <button className='remove' onClick={() => (deleteButton(props.slot))}>Remove</button>
         </div>
     )
 }

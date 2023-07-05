@@ -78,13 +78,12 @@ const Ranking = (props) => {
       <section className="ranking">
          <div className="wrapper glass">
             <div>
-               <h2>Highest grossing movies of year {userYear}:</h2>
+               <h2>Highest grossing movies of {userYear}:</h2>
             </div>
             <div className="editButton">
                <button onClick={handleEdit}>{edit ? "Save" : "Edit"}</button>
             </div>
             <ol>
-
                {
                   props.userList.map((listItem, index) => {
                      return (

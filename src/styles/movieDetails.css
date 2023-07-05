@@ -11,9 +11,9 @@
 }
 
 .movieDetails h2 {
-    margin: 0;
+    margin: 10px 0;
 }
 
 p span {
-    font-weight: bold;
+    font-weight: 600;
 }
