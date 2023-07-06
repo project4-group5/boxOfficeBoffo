@@ -6,6 +6,7 @@ import PersonalizedList from './components/PersonalizedList';
 import { Route, Routes } from 'react-router-dom';
 import Ranking from './components/Ranking';
 import MovieDetails from './components/MovieDetails';
+import CompareLists from './components/CompareLists';
 import { useState } from 'react';
 
 // styles
@@ -39,6 +40,7 @@ function App() {
         <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
         <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
         <Route path="/PersonalizedList/:personalKey/:userYear" element={<PersonalizedList userList={userList} setUserList={setUserList} />} />
+        <Route path="/CompareLists" element={<CompareLists  />} />
       </Routes>
 
       <Footer />
