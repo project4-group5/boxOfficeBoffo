@@ -124,12 +124,16 @@ const PersonalizedList = (props) => {
       
       {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
 
+      <button onClick={handleRestart}>Start new game</button>
+
+      <p>Your personal key is: {personalKey}</p>
+
       <div className="flexContainer">
         <h2>Your List</h2>
         <ol className="glass">
-          {personalRanking.map((movie) => {
+          {personalRanking.map((movie, index) => {
             return (
-              <li>
+              <li key={index}>
                 {movie}
               </li>
             )
@@ -140,9 +144,9 @@ const PersonalizedList = (props) => {
       <div className="flexContainer">
         <h2>Answer</h2>
         <ol className="glass">
-          {actualRanking.map((movie) => {
+          {actualRanking.map((movie, index) => {
             return (
-              <li>
+              <li key={index}>
                 {movie}
               </li>
             )
