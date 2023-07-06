@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import OrderButtons from "./OrderButtons";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getDatabase, ref, push } from "firebase/database";
 import firebase from "../firebase";
 
@@ -11,7 +11,15 @@ const Ranking = (props) => {
    const navigate = useNavigate();
    const { userYear } = useParams();
    const [edit, setEdit] = useState(false);
+   const [listEmpty, setListEmpty] = useState(true);
 
+   useEffect(() => {
+      const isEmpty = props.userList.every(
+         (movie) => movie === "Click to add movie"
+      );
+      setListEmpty(isEmpty);
+   }, [props.userList]);
+   
    const handleClick = (slot) => {
       props.setMovieSlot(slot);
       navigate(`/Gallery/${userYear}`);
@@ -20,6 +28,8 @@ const Ranking = (props) => {
    const handleEdit = () => {
       setEdit(!edit);
    }
+
+ 
 
    const handleClear = () => {
       console.log('hi');
@@ -70,14 +80,15 @@ const Ranking = (props) => {
 
             //pushing the firebaseEntry object into firebase
             const dbPush = push(dbRef, firebaseEntry);
-            console.log(dbPush);
-            console.log(dbPush._path)
-            console.log(dbPush._path.pieces_);
+            // console.log(dbPush);
+            // console.log(dbPush._path)
+            // console.log(dbPush._path.pieces_);
             navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}/${userYear}`);
             }
            
          }     
    }
+   console.log(listEmpty, props.userList);
 
    return (
       <section className="ranking">
@@ -86,7 +97,7 @@ const Ranking = (props) => {
                <h2>Highest grossing movies of {userYear}:</h2>
             </div>
             <div className="editButton">
-               <button onClick={handleEdit}>{edit ? "Save" : "Edit"}</button>
+               {!listEmpty && <button onClick={handleEdit}>{edit ? "Save" : "Edit"}</button>}
             </div>
             <ol>
                {

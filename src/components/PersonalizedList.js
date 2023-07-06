@@ -73,7 +73,6 @@ const PersonalizedList = (props) => {
       actualRanking.forEach((actualMovie, actualIndex) => {
         if (userMovie === actualMovie) {
           difference = Math.abs(userIndex - actualIndex)
-          console.log("inside the if statement")
         }
       })
 
@@ -96,11 +95,32 @@ const PersonalizedList = (props) => {
       console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
     return `Your score is ${score}/100`;
+  }
 
+  const movieScore = (userMovie, userIndex) => {
+     let difference = 100
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          difference = Math.abs(userIndex - actualIndex)
+        }
+      })
+
+        switch (difference) {
+        case 0:
+          return "points10"
+        case 1:
+          return "points7"
+        case 2:
+          return "points5"
+        case 100:
+          return "points0"
+        default:
+          return "points1"
+      }
   }
 
   const handleCompare = () => {
-    navigate('/CompareLists')
+    navigate(`/CompareLists/${personalKey}`)
   }
   const handleRestart = () => {
     const newVariable = [
@@ -137,7 +157,7 @@ const PersonalizedList = (props) => {
         <ol className="glass">
           {personalRanking.map((movie, index) => {
             return (
-              <li key={index}>
+              <li key={index} className ={movieScore(movie, index)}>
                 {movie}
               </li>
             )

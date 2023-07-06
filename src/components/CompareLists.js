@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
@@ -7,11 +7,14 @@ const CompareLists =  (props) => {
   const [userList1, setUserList1] = useState([]);
   const [userList2, setUserList2] = useState([]);
 
-  const [key1, setKey1] = useState([]);
+  const user1Key = useParams();
+  console.log(user1Key);
+
+  const [key1, setKey1] = useState(user1Key.user1Key);
   const [key2, setKey2] = useState([]);
   
   const navigate = useNavigate();
-  
+
   const handleChange1 = (event) => {
     setKey1(event.target.value)
   }
