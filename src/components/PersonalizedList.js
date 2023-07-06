@@ -100,6 +100,9 @@ const PersonalizedList = (props) => {
 
   }
 
+  const handleCompare = () => {
+    navigate('/CompareLists')
+  }
   const handleRestart = () => {
     const newVariable = [
       "Click to add movie",
@@ -125,8 +128,10 @@ const PersonalizedList = (props) => {
       {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
 
       <button onClick={handleRestart}>Start new game</button>
+      <button onClick={handleCompare}>Compare with others</button>
 
-      <p>Your personal key is: {personalKey}</p>
+      <p>Your personal key is: {personalKey} <button onClick={() => {
+         navigator.clipboard.writeText(personalKey);}}>Copy</button>Copy it and use it compare with friends</p>
 
       <div className="flexContainer">
         <h2>Your List</h2>
