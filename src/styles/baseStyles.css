@@ -62,6 +62,8 @@ button {
     background-color: #99D6EA;
     padding: 10px 12px;
     font-size: clamp(0.8rem, 4vw, 1rem);
+    font-family: 'Baloo 2', cursive;
+    font-weight: 500;
 
 }
 

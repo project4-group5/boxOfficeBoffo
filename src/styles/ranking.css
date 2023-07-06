@@ -1,5 +1,6 @@
-.ranking ol{
+.ranking ol {
     padding: 0;
+    list-style-type: decimal;
 }
 
 .ranking li {
@@ -19,4 +20,13 @@
 
 .ranking .buttonContainer button {
     margin-right: 10px;
+}
+
+.ranking p {
+    color: #6798C0;
+}
+
+.ranking .movie p {
+    color: #0A171F;
+    font-weight: 500;
 }

@@ -77,7 +77,6 @@ const PersonalizedList = (props) => {
         }
       })
 
-
       switch (difference) {
         case 0:
           score += 10;

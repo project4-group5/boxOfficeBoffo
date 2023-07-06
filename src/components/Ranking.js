@@ -92,7 +92,7 @@ const Ranking = (props) => {
                {
                   props.userList.map((listItem, index) => {
                      return (
-                        <li key={index} className={(listItem !== "Click to add movie") && "movie"}><p onClick={() => handleClick(index)}>{listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
+                        <li key={index} className={(listItem !== "Click to add movie") && "movie"}> <p onClick={() => handleClick(index)}>{index + 1}. {listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
                      )
 
                   })
