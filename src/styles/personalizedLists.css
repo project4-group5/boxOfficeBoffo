@@ -18,6 +18,26 @@
     width: 48%;
 }
 
+.persoList .points10 {
+    color: green;
+}
+
+.persoList .points7 {
+    color: blue;
+}
+
+.persoList .points5 {
+    color: purple;
+}
+
+.persoList .points1 {
+    color: orange;
+}
+
+.persoList .points0 {
+    color: red;
+}
+
 @media (max-width: 500px) {
 .persoList .flexContainer {
         width: 100%;
