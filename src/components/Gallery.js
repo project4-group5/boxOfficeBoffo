@@ -82,7 +82,7 @@ const Gallery = (props) => {
          {/* wrapper container begins */}
          <div className="wrapper">
             {/* back button that calls function */}
-            <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
+            <button className="backButton galleryBack" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
             {/* ternary operator to show loading if the api is slower than the app */}
             {loading 
             ? 

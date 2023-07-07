@@ -4,6 +4,7 @@
     margin: 0 auto;
     max-width: 700px;
     width: 90%;
+    position: relative;
 }
 
 html {
@@ -62,7 +63,10 @@ button {
     background-color: #99D6EA;
     padding: 10px 12px;
     font-size: clamp(0.8rem, 4vw, 1rem);
+}
 
+.backButton {
+    position: absolute;
 }
 
 @media (max-width: 500px) {
