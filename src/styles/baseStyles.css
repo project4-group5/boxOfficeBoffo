@@ -78,6 +78,10 @@ button:focus {
     background-color: #6798C0;
 }
 
+.backButton {
+    position: absolute;
+}
+
 @media (max-width: 500px) {
     .glass {
         padding: 10px;
