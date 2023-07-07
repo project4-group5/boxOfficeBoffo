@@ -4,32 +4,34 @@ import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
 import axios from "axios";
 
-
+// imported the styles
 import '../styles/personalizedLists.css'
 
 const PersonalizedList = (props) => {
 
-
+  // state variable declaration
   const [actualRanking, setActualRanking] = useState([]);
   const [personalRanking, setPersonalRanking] = useState([]);
+  //  hook destructured variable declaration
   const { personalKey, userYear } = useParams();
-  console.log(personalKey, userYear)
+  // hook variable declaration
   const navigate = useNavigate();
 
-
-
+  // useEffect hook that checks for changes
   useEffect(() => {
+    // firebase variable declaration
     const database = getDatabase(firebase);
     const dbRef = ref(database);
-
+    // "GET"-ting the firebase data
     get(dbRef).then((snapshot) => {
       // One of the returned values is a method called ".exists()", which will return a boolean value for whether there is a returned value from our "get" function 
       if (snapshot.exists()) {
         // We call `.val()` on our snapshot to get the contents of our data. The returned data will be an object that we can  iterate through later
         const allLists = snapshot.val()
+        // loop to check if variable is in the array
         for (let dbKey in allLists) {
+          // if the key matches, store it in state
           if (dbKey === personalKey) {
-            console.log(allLists[dbKey].list);
             setPersonalRanking(allLists[dbKey].list);
           }
         }
@@ -39,6 +41,7 @@ const PersonalizedList = (props) => {
     }).catch((error) => {
       console.log(error)
     })
+    // axios call 
     axios({
       url: "https://api.themoviedb.org/3/discover/movie",
       method: "GET",
@@ -65,18 +68,22 @@ const PersonalizedList = (props) => {
     })
   }, [])
 
+  // function that is called when user completed list and a score is given
   const score = () => {
-    //scorecard
+    // setting the score variable to be 0
     let score = 0;
+    // for each method to go through each movie in the personal array
     personalRanking.forEach((userMovie, userIndex) => {
       let difference = 100
+      // checking to see if user movie and actual movie matches
       actualRanking.forEach((actualMovie, actualIndex) => {
         if (userMovie === actualMovie) {
+          // if it does match, then adjust the difference variable to match score
           difference = Math.abs(userIndex - actualIndex)
         }
       })
 
-
+      // scoring logic
       switch (difference) {
         case 0:
           score += 10;
@@ -95,9 +102,11 @@ const PersonalizedList = (props) => {
       }
       console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
+    // app will return the final score out of 100 to user
     return `Your score is ${score}/100`;
   }
 
+  // function that calculates the score for each individual movie
   const movieScore = (userMovie, userIndex) => {
      let difference = 100
       actualRanking.forEach((actualMovie, actualIndex) => {
@@ -105,7 +114,7 @@ const PersonalizedList = (props) => {
           difference = Math.abs(userIndex - actualIndex)
         }
       })
-
+        //  scoring logic
         switch (difference) {
         case 0:
           return "points10"
@@ -120,10 +129,14 @@ const PersonalizedList = (props) => {
       }
   }
 
+  // function that is called when user wants to compare list
   const handleCompare = () => {
     navigate(`/CompareLists/${personalKey}`)
   }
+
+  // function that is called when user wants to start a new game
   const handleRestart = () => {
+    // clearing the movie list to initial data
     const newVariable = [
       "Click to add movie",
       "Click to add movie",
@@ -136,28 +149,32 @@ const PersonalizedList = (props) => {
       "Click to add movie",
       "Click to add movie"
     ]
+    // setting the state to base data
     props.setUserList(newVariable);
+    // navigate user to main page
     navigate(`/`)
-
   }
 
   return (
-    
+    // wrapper container
     <div className="wrapper persoList">
-      
+      {/* ternary operator - score will be shown here */}
       {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
-
+      {/* buttons that call functions when user clicks */}
       <button onClick={handleRestart}>Start new game</button>
       <button onClick={handleCompare}>Compare with others</button>
-
+      {/* personal key is appended here with option to copy the key button */}
       <p>Your personal key is: {personalKey} <button onClick={() => {
-         navigator.clipboard.writeText(personalKey);}}>Copy</button>Copy it and use it compare with friends</p>
-
+        navigator.clipboard.writeText(personalKey);}}>Copy</button>Copy it and use it compare with friends</p>
+      {/* first flex container which hold user list choices */}
       <div className="flexContainer">
         <h2>Your List</h2>
+        {/* ordered list element */}
         <ol className="glass">
+          {/* mapping through the user array */}
           {personalRanking.map((movie, index) => {
             return (
+              // appending each movie to DOM
               <li key={index} className ={movieScore(movie, index)}>
                 {movie}
               </li>
@@ -165,12 +182,15 @@ const PersonalizedList = (props) => {
           })}
         </ol>
       </div>
-
+      {/* second flex container which hold correct answer list */}
       <div className="flexContainer">
         <h2>Answer</h2>
+        {/* ordered list element */}
         <ol className="glass">
+          {/* mapping through the user array */}
           {actualRanking.map((movie, index) => {
             return (
+              // appending each movie to DOM
               <li key={index}>
                 {movie}
               </li>
@@ -178,7 +198,6 @@ const PersonalizedList = (props) => {
           })}
         </ol>
       </div>
-
     </div>
   )
 }
