@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import OrderButtons from "./OrderButtons";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getDatabase, ref, push } from "firebase/database";
 import firebase from "../firebase";
 
@@ -15,8 +15,16 @@ const Ranking = (props) => {
    const { userYear } = useParams();
    // state variable declaration
    const [edit, setEdit] = useState(false);
+   const [listEmpty, setListEmpty] = useState(true);
 
    // function that is called when user clicks "select a movie"
+   useEffect(() => {
+      const isEmpty = props.userList.every(
+         (movie) => movie === "Click to add movie"
+      );
+      setListEmpty(isEmpty);
+   }, [props.userList]);
+   
    const handleClick = (slot) => {
       // storing the specific index chosen by user into the state
       props.setMovieSlot(slot);
@@ -29,6 +37,7 @@ const Ranking = (props) => {
       // changing the state to the opposite of what it currently is
       setEdit(!edit);
    }
+
 
    // function that is called when user want to clear all the selections they've chosen.
    const handleClear = () => {
@@ -94,6 +103,7 @@ const Ranking = (props) => {
          }
       }     
    }
+   console.log(listEmpty, props.userList);
 
    return (
       // section begins
@@ -105,7 +115,7 @@ const Ranking = (props) => {
             </div>
             {/* edit button container */}
             <div className="editButton">
-               <button onClick={handleEdit}>{edit ? "Save" : "Edit"}</button>
+               {!listEmpty && <button onClick={handleEdit}>{edit ? "Save" : "Edit"}</button>}
             </div>
             {/* ordered list element */}
             <ol>

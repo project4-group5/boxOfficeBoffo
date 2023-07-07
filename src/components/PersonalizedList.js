@@ -106,10 +106,32 @@ const PersonalizedList = (props) => {
     return `Your score is ${score}/100`;
   }
 
+  // function that calculates the score for each individual movie
+  const movieScore = (userMovie, userIndex) => {
+     let difference = 100
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          difference = Math.abs(userIndex - actualIndex)
+        }
+      })
+        //  scoring logic
+        switch (difference) {
+        case 0:
+          return "points10"
+        case 1:
+          return "points7"
+        case 2:
+          return "points5"
+        case 100:
+          return "points0"
+        default:
+          return "points1"
+      }
+  }
+
   // function that is called when user wants to compare list
   const handleCompare = () => {
-    // user will be navigated to the compareList component
-    navigate('/CompareLists')
+    navigate(`/CompareLists/${personalKey}`)
   }
 
   // function that is called when user wants to start a new game
@@ -153,7 +175,7 @@ const PersonalizedList = (props) => {
           {personalRanking.map((movie, index) => {
             return (
               // appending each movie to DOM
-              <li key={index}>
+              <li key={index} className ={movieScore(movie, index)}>
                 {movie}
               </li>
             )

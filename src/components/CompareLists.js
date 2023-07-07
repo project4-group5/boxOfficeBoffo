@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
@@ -9,11 +9,15 @@ const CompareLists =  (props) => {
   const [userList1, setUserList1] = useState([]);
   const [userList2, setUserList2] = useState([]);
   // second set of state variable declarations
-  const [key1, setKey1] = useState([]);
+
+  const user1Key = useParams();
+
+  const [key1, setKey1] = useState(user1Key.user1Key);
   const [key2, setKey2] = useState([]);
   
 
   const navigate = useNavigate();
+
   
   // function that is called whenever theres is a change detected from the user
   const handleChange1 = (event) => {

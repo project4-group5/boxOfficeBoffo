@@ -45,7 +45,7 @@ function App() {
         <Route path="/Gallery/:userYear" element={<Gallery userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
         <Route path="/MovieDetails/:movieId" element={<MovieDetails userList={userList} movieSlot={movieSlot} setUserList={setUserList} />} />
         <Route path="/PersonalizedList/:personalKey/:userYear" element={<PersonalizedList userList={userList} setUserList={setUserList} />} />
-        <Route path="/CompareLists" element={<CompareLists userList={userList} setUserList={setUserList} />} />
+        <Route path="/CompareLists/:user1Key" element={<CompareLists userList={userList} setUserList={setUserList} />} />
       </Routes>
       {/* Footer component */}
       <Footer />
