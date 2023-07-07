@@ -24,9 +24,12 @@
 
 .ranking p {
     color: #6798C0;
+    padding: 10px 0;
+    cursor: default;
 }
 
 .ranking .movie p {
     color: #0A171F;
     font-weight: 500;
+    /* cursor: default; */
 }
