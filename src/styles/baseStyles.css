@@ -35,6 +35,7 @@ p {
 }
 
 h2 {
+    padding: 10px 0;
     text-align: center;
     font-size: clamp(1rem, 5vw, 1.6rem);
     font-weight: 700;
@@ -62,13 +63,28 @@ button {
     background-color: #99D6EA;
     padding: 10px 12px;
     font-size: clamp(0.8rem, 4vw, 1rem);
+    font-family: 'Baloo 2', cursive;
+    font-weight: 500;
+}
 
+button:hover {
+    color: white;
+    background-color: #6798C0;
+}
+
+button:focus {
+    color: white;
+    background-color: #6798C0;
 }
 
 @media (max-width: 500px) {
     .glass {
         padding: 10px;
         border-radius: 30px;
+    }
+
+    .wrapper {
+        width: 95%;
     }
 }
 
