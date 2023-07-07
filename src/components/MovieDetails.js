@@ -55,8 +55,8 @@ const MovieDetails = (props) => {
     return(
         <section className='movieDetails'>
             <div className='wrapper glass flexContainer'>
-                <div className="backButton">
-                    <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
+                <div>
+                    <button className="backButton" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <div className="imageContainer">
                     <img src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`} alt={`Poster for ${movie.title}`} />
