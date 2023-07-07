@@ -8,6 +8,7 @@ import Ranking from './components/Ranking';
 import MovieDetails from './components/MovieDetails';
 import CompareLists from './components/CompareLists';
 import { useState } from 'react';
+import HelpButton from './components/HelpButton';
 
 // styles
 import './styles/setUp.css';
@@ -34,6 +35,7 @@ function App() {
   return (
     <>
       <Header />
+      <HelpButton />
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} setUserList={setUserList} setMovieSlot={setMovieSlot} />} />
