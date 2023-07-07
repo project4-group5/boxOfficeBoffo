@@ -2,6 +2,10 @@
     /* position: absolute; */
 }
 
+.detailsBack {
+    top: -60px;
+    left: 0;
+}
 .movieDetails .flexContainer {
     display: flex;
     flex-direction: column;
