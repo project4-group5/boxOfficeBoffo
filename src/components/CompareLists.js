@@ -6,15 +6,25 @@ import firebase from "../firebase";
 // Compare list component 
 const CompareLists =  (props) => {
   // first set of state variable declarations
-  const [userList1, setUserList1] = useState([]);
-  const [userList2, setUserList2] = useState([]);
+  const [user1Info, setUser1Info] = useState({
+    year: null,
+    name: "",
+    list: []
+  });
+  const [user2Info, setUser2Info] = useState({
+    year: null,
+    name: "",
+    list: []
+  });
   // second set of state variable declarations
 
   const user1Key = useParams();
 
   const [key1, setKey1] = useState(user1Key.user1Key);
   const [key2, setKey2] = useState([]);
-  
+
+  const [key1exists, setKey1exists] = useState(false);
+  const [key2exists, setKey2exists] = useState(false);  
 
   const navigate = useNavigate();
 
@@ -32,6 +42,20 @@ const CompareLists =  (props) => {
 
   // function that is called when compare button is clicked, user's input will be passed as arguements. 
   const handleCompare = (key1, key2) => {
+    setKey1exists(false)
+    setKey2exists(false)
+
+    setUser1Info({
+    year: null,
+    name: "",
+    list: []
+  });
+    setUser1Info({
+    year: null,
+    name: "",
+    list: []
+  });
+
     // firebase variables declaration
     const database = getDatabase(firebase);
     const dbRef = ref(database);
@@ -44,15 +68,15 @@ const CompareLists =  (props) => {
         for (let dbKey in allLists) {
           // if statement to check the firebase database to see if the first user's input matches any of the files
           if (dbKey === key1) {
-            console.log(allLists[dbKey].list);
             // storing the specific list into the first userList state
-            setUserList1(allLists[dbKey].list)
+            setUser1Info(allLists[dbKey])
+            setKey1exists(true)
           }
           // if statement to check the firebase database to see if the second user's input matches any of the files
           if (dbKey === key2) {
-            console.log(allLists[dbKey].list);
             // storing the specific list into the second userList state
-            setUserList2(allLists[dbKey].list)
+            setUser2Info(allLists[dbKey])
+            setKey2exists(true)
           }
         }
       } else {
@@ -92,26 +116,39 @@ const CompareLists =  (props) => {
       <h3>User 1 list</h3>
       {/* input for first users key */}
       <input type="text" placeholder="Please enter user 1 key" onChange={handleChange1} value={key1}></input>
+      {!key1exists && <p>Please enter a valid key and press Compare</p>}
       <h3>User 2 list</h3>
       {/* input for second users key */}
       <input type="text" placeholder="Please enter user 2 key" onChange={handleChange2} value={key2}></input>
+      {!key2exists && <p>Please enter a valid key and press Compare</p>}
       {/* button that is clicked once the users have completed the input */}
       <button onClick={() => handleCompare(key1, key2)}>Compare</button>
-
+      
+      {
+        user1Info.year !== user2Info.year && <p>Please make sure keys belong to the same year</p>
+      }
+      
+      {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
+      <h3>{user1Info.year}</h3>
       {/* first ul element */}
       <ul>
+        <p>{user1Info.name}</p>
         {/* map that goes through first array and appends each list */}
-        {userList1.map((movie) => {
-          return <li>{movie}</li>
+        {user1Info.list.map((movie, index) => {
+          return <li key={index}>{movie}</li>
         })}
       </ul>
       {/* second ul element */}
+      <h3>{user2Info.year}</h3>
+      <p>{user2Info.name}</p>
       <ul>
         {/* map that goes through first array and appends each list */}
-        {userList2.map((movie) => {
-          return <li>{movie}</li>
+        {user2Info.list.map((movie, index) => {
+          return <li key={index}>{movie}</li>
         })}
       </ul>
+      </>}
+      
     </>
   )
 }
