@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
+import axios from "axios";
 
 // Compare list component 
 const CompareLists =  (props) => {
@@ -16,6 +17,8 @@ const CompareLists =  (props) => {
     name: "",
     list: []
   });
+
+  const [actualRanking, setActualRanking] = useState([]);
   // second set of state variable declarations
 
   const user1Key = useParams();
@@ -28,7 +31,34 @@ const CompareLists =  (props) => {
 
   const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    axios({
+      url: "https://api.themoviedb.org/3/discover/movie",
+      method: "GET",
+      dataResponse: "json",
+      params: {
+        api_key: "c7d2bc1af674054e4cbfe886c8424b11",
+        include_adult: "false",
+        include_video: "false",
+        language: "en-US",
+        page: "1",
+        primary_release_year: `${user1Info.year}`,
+        "primary_release_date.gte": `${user1Info.year}-05-01`,
+        "primary_release_date.lte": `${user1Info.year}-09-04`,
+        sort_by: "revenue.desc",
+        with_original_language: "en",
+      },
+    }).then((res) => {
+      const actualList = [];
+      if (res.data.results.length > 0) {
+        for (let i = 0; i < 10; i++) {
+        actualList.push(res.data.results[i].title)
+      }
+        console.log(actualList);
+        setActualRanking(actualList);
+      }
+    })
+  }, [user1Info, user2Info])
   // function that is called whenever theres is a change detected from the user
   const handleChange1 = (event) => {
     // setting the initial state, which will be the value of the first users input (their personal key)
@@ -85,7 +115,10 @@ const CompareLists =  (props) => {
     }).catch((error) => {
       console.log(error)
     })
+
   }
+
+
 
   // function that is called when user selects "start new game"
   const handleRestart = () => {
@@ -106,8 +139,71 @@ const CompareLists =  (props) => {
     props.setUserList(newVariable);
     // navigate to the main page
     navigate(`/`)
-
   }
+
+
+    // function that is called when user completed list and a score is given
+  const score = (userRanking) => {
+    // setting the score variable to be 0
+    let score = 0;
+    // for each method to go through each movie in the personal array
+    userRanking.forEach((userMovie, userIndex) => {
+      let difference = 100
+      // checking to see if user movie and actual movie matches
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          // if it does match, then adjust the difference variable to match score
+          difference = Math.abs(userIndex - actualIndex)
+        }
+      })
+
+
+      // scoring logic
+      switch (difference) {
+        case 0:
+          score += 10;
+          break;
+        case 1:
+          score += 7;
+          break;
+        case 2:
+          score += 5;
+          break;
+        case 100:
+          score += 0;
+          break;
+        default:
+          score += 1;
+      }
+      console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
+    })
+    // app will return the final score out of 100 to user
+    return `Your score is ${score}/100`;
+  }
+
+
+  const movieScore = (userMovie, userIndex) => {
+     let difference = 100
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          difference = Math.abs(userIndex - actualIndex)
+        }
+      })
+        //  scoring logic
+        switch (difference) {
+        case 0:
+          return "points10"
+        case 1:
+          return "points7"
+        case 2:
+          return "points5"
+        case 100:
+          return "points0"
+        default:
+          return "points1"
+      }
+  }
+
   return (
     // fragment element
     <>
@@ -135,18 +231,20 @@ const CompareLists =  (props) => {
         <p>{user1Info.name}</p>
         {/* map that goes through first array and appends each list */}
         {user1Info.list.map((movie, index) => {
-          return <li key={index}>{movie}</li>
+          return <li key={index} className = {movieScore(movie, index)}>{movie}</li>
         })}
       </ul>
+      {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
       {/* second ul element */}
       <h3>{user2Info.year}</h3>
       <p>{user2Info.name}</p>
       <ul>
         {/* map that goes through first array and appends each list */}
         {user2Info.list.map((movie, index) => {
-          return <li key={index}>{movie}</li>
+          return <li key={index} className = {movieScore(movie, index)}>{movie}</li>
         })}
       </ul>
+      {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
       </>}
       
     </>
