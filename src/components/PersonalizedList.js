@@ -176,7 +176,7 @@ const PersonalizedList = (props) => {
           {personalRanking.map((movie, index) => {
             return (
               // appending each movie to DOM
-              <li key={index} className ={movieScore(movie, index)}>
+              <li key={index} className = {movieScore(movie, index)}>
                 {movie}
               </li>
             )
