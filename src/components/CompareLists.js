@@ -1,11 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
 import axios from "axios";
 
+import '../styles/personalizedLists.css'
+
 // Compare list component 
-const CompareLists =  (props) => {
+const CompareLists = (props) => {
   // first set of state variable declarations
   const [user1Info, setUser1Info] = useState({
     year: null,
@@ -27,7 +29,7 @@ const CompareLists =  (props) => {
   const [key2, setKey2] = useState([]);
 
   const [key1exists, setKey1exists] = useState(false);
-  const [key2exists, setKey2exists] = useState(false);  
+  const [key2exists, setKey2exists] = useState(false);
 
   const navigate = useNavigate();
 
@@ -52,8 +54,8 @@ const CompareLists =  (props) => {
       const actualList = [];
       if (res.data.results.length > 0) {
         for (let i = 0; i < 10; i++) {
-        actualList.push(res.data.results[i].title)
-      }
+          actualList.push(res.data.results[i].title)
+        }
         console.log(actualList);
         setActualRanking(actualList);
       }
@@ -66,7 +68,7 @@ const CompareLists =  (props) => {
   }
   // function that is called whenever theres is a change detected from the user
   const handleChange2 = (event) => {
-  // setting the second state, which will be the value of the second users input (their personal key)
+    // setting the second state, which will be the value of the second users input (their personal key)
     setKey2(event.target.value)
   }
 
@@ -76,15 +78,15 @@ const CompareLists =  (props) => {
     setKey2exists(false)
 
     setUser1Info({
-    year: null,
-    name: "",
-    list: []
-  });
+      year: null,
+      name: "",
+      list: []
+    });
     setUser1Info({
-    year: null,
-    name: "",
-    list: []
-  });
+      year: null,
+      name: "",
+      list: []
+    });
 
     // firebase variables declaration
     const database = getDatabase(firebase);
@@ -142,7 +144,7 @@ const CompareLists =  (props) => {
   }
 
 
-    // function that is called when user completed list and a score is given
+  // function that is called when user completed list and a score is given
   const score = (userRanking) => {
     // setting the score variable to be 0
     let score = 0;
@@ -183,71 +185,79 @@ const CompareLists =  (props) => {
 
 
   const movieScore = (userMovie, userIndex) => {
-     let difference = 100
-      actualRanking.forEach((actualMovie, actualIndex) => {
-        if (userMovie === actualMovie) {
-          difference = Math.abs(userIndex - actualIndex)
-        }
-      })
-        //  scoring logic
-        switch (difference) {
-        case 0:
-          return "points10"
-        case 1:
-          return "points7"
-        case 2:
-          return "points5"
-        case 100:
-          return "points0"
-        default:
-          return "points1"
+    let difference = 100
+    actualRanking.forEach((actualMovie, actualIndex) => {
+      if (userMovie === actualMovie) {
+        difference = Math.abs(userIndex - actualIndex)
       }
+    })
+    //  scoring logic
+    switch (difference) {
+      case 0:
+        return "points10"
+      case 1:
+        return "points7"
+      case 2:
+        return "points5"
+      case 100:
+        return "points0"
+      default:
+        return "points1"
+    }
   }
 
   return (
     // fragment element
-    <>
+
+    <section className="wrapper">
       {/* button which resets the app*/}
       <button onClick={handleRestart}>Start new game</button>
-      <h3>User 1 list</h3>
+      <label>User 1 list</label>
       {/* input for first users key */}
       <input type="text" placeholder="Please enter user 1 key" onChange={handleChange1} value={key1}></input>
       {!key1exists && <p>Please enter a valid key and press Compare</p>}
-      <h3>User 2 list</h3>
+      <label>User 2 list</label>
       {/* input for second users key */}
       <input type="text" placeholder="Please enter user 2 key" onChange={handleChange2} value={key2}></input>
       {!key2exists && <p>Please enter a valid key and press Compare</p>}
       {/* button that is clicked once the users have completed the input */}
       <button onClick={() => handleCompare(key1, key2)}>Compare</button>
-      
+
       {
         user1Info.year !== user2Info.year && <p>Please make sure keys belong to the same year</p>
       }
-      
+
       {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
-      <h3>{user1Info.year}</h3>
-      {/* first ul element */}
-      <ul>
-        <p>{user1Info.name}</p>
-        {/* map that goes through first array and appends each list */}
-        {user1Info.list.map((movie, index) => {
-          return <li key={index} className = {movieScore(movie, index)}>{movie}</li>
-        })}
-      </ul>
-      {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
-      {/* second ul element */}
-      <h3>{user2Info.year}</h3>
-      <p>{user2Info.name}</p>
-      <ul>
-        {/* map that goes through first array and appends each list */}
-        {user2Info.list.map((movie, index) => {
-          return <li key={index} className = {movieScore(movie, index)}>{movie}</li>
-        })}
-      </ul>
-      {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
+        <div className="persoList">
+          <div className="flexContainer">
+            <h2>{user1Info.year}</h2>
+            <h3>{user1Info.name}</h3>
+            {/* first ul element */}
+            <ul className="glass">
+              {/* map that goes through first array and appends each list */}
+              {user1Info.list.map((movie, index) => {
+                return <li key={index} className={movieScore(movie, index)}>{movie}</li>
+              })}
+            </ul>
+          {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
+          </div>
+
+          <div className="flexContainer">
+            {/* second ul element */}
+            <h2>{user2Info.year}</h2>
+            <h3>{user2Info.name}</h3>
+            <ul className="glass">
+              {/* map that goes through first array and appends each list */}
+              {user2Info.list.map((movie, index) => {
+                return <li key={index} className={movieScore(movie, index)}>{movie}</li>
+              })}
+            </ul>
+          {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
+          </div>
+        </div>
       </>}
-      
-    </>
+    </section>
+
   )
 }
 
