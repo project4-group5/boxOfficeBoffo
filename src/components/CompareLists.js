@@ -1,24 +1,64 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { getDatabase, ref, get } from "firebase/database";
 import firebase from "../firebase";
+import axios from "axios";
 
 // Compare list component 
 const CompareLists =  (props) => {
   // first set of state variable declarations
-  const [userList1, setUserList1] = useState([]);
-  const [userList2, setUserList2] = useState([]);
+  const [user1Info, setUser1Info] = useState({
+    year: null,
+    name: "",
+    list: []
+  });
+  const [user2Info, setUser2Info] = useState({
+    year: null,
+    name: "",
+    list: []
+  });
+
+  const [actualRanking, setActualRanking] = useState([]);
   // second set of state variable declarations
 
   const user1Key = useParams();
 
   const [key1, setKey1] = useState(user1Key.user1Key);
   const [key2, setKey2] = useState([]);
-  
+
+  const [key1exists, setKey1exists] = useState(false);
+  const [key2exists, setKey2exists] = useState(false);  
 
   const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    axios({
+      url: "https://api.themoviedb.org/3/discover/movie",
+      method: "GET",
+      dataResponse: "json",
+      params: {
+        api_key: "c7d2bc1af674054e4cbfe886c8424b11",
+        include_adult: "false",
+        include_video: "false",
+        language: "en-US",
+        page: "1",
+        primary_release_year: `${user1Info.year}`,
+        "primary_release_date.gte": `${user1Info.year}-05-01`,
+        "primary_release_date.lte": `${user1Info.year}-09-04`,
+        sort_by: "revenue.desc",
+        with_original_language: "en",
+      },
+    }).then((res) => {
+      const actualList = [];
+      if (res.data.results.length > 0) {
+        for (let i = 0; i < 10; i++) {
+        actualList.push(res.data.results[i].title)
+      }
+        console.log(actualList);
+        setActualRanking(actualList);
+      }
+    })
+  }, [user1Info, user2Info])
   // function that is called whenever theres is a change detected from the user
   const handleChange1 = (event) => {
     // setting the initial state, which will be the value of the first users input (their personal key)
@@ -32,6 +72,20 @@ const CompareLists =  (props) => {
 
   // function that is called when compare button is clicked, user's input will be passed as arguements. 
   const handleCompare = (key1, key2) => {
+    setKey1exists(false)
+    setKey2exists(false)
+
+    setUser1Info({
+    year: null,
+    name: "",
+    list: []
+  });
+    setUser1Info({
+    year: null,
+    name: "",
+    list: []
+  });
+
     // firebase variables declaration
     const database = getDatabase(firebase);
     const dbRef = ref(database);
@@ -44,15 +98,15 @@ const CompareLists =  (props) => {
         for (let dbKey in allLists) {
           // if statement to check the firebase database to see if the first user's input matches any of the files
           if (dbKey === key1) {
-            console.log(allLists[dbKey].list);
             // storing the specific list into the first userList state
-            setUserList1(allLists[dbKey].list)
+            setUser1Info(allLists[dbKey])
+            setKey1exists(true)
           }
           // if statement to check the firebase database to see if the second user's input matches any of the files
           if (dbKey === key2) {
-            console.log(allLists[dbKey].list);
             // storing the specific list into the second userList state
-            setUserList2(allLists[dbKey].list)
+            setUser2Info(allLists[dbKey])
+            setKey2exists(true)
           }
         }
       } else {
@@ -61,7 +115,10 @@ const CompareLists =  (props) => {
     }).catch((error) => {
       console.log(error)
     })
+
   }
+
+
 
   // function that is called when user selects "start new game"
   const handleRestart = () => {
@@ -82,8 +139,71 @@ const CompareLists =  (props) => {
     props.setUserList(newVariable);
     // navigate to the main page
     navigate(`/`)
-
   }
+
+
+    // function that is called when user completed list and a score is given
+  const score = (userRanking) => {
+    // setting the score variable to be 0
+    let score = 0;
+    // for each method to go through each movie in the personal array
+    userRanking.forEach((userMovie, userIndex) => {
+      let difference = 100
+      // checking to see if user movie and actual movie matches
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          // if it does match, then adjust the difference variable to match score
+          difference = Math.abs(userIndex - actualIndex)
+        }
+      })
+
+
+      // scoring logic
+      switch (difference) {
+        case 0:
+          score += 10;
+          break;
+        case 1:
+          score += 7;
+          break;
+        case 2:
+          score += 5;
+          break;
+        case 100:
+          score += 0;
+          break;
+        default:
+          score += 1;
+      }
+      console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
+    })
+    // app will return the final score out of 100 to user
+    return `Your score is ${score}/100`;
+  }
+
+
+  const movieScore = (userMovie, userIndex) => {
+     let difference = 100
+      actualRanking.forEach((actualMovie, actualIndex) => {
+        if (userMovie === actualMovie) {
+          difference = Math.abs(userIndex - actualIndex)
+        }
+      })
+        //  scoring logic
+        switch (difference) {
+        case 0:
+          return "points10"
+        case 1:
+          return "points7"
+        case 2:
+          return "points5"
+        case 100:
+          return "points0"
+        default:
+          return "points1"
+      }
+  }
+
   return (
     // fragment element
     <>
@@ -92,26 +212,41 @@ const CompareLists =  (props) => {
       <h3>User 1 list</h3>
       {/* input for first users key */}
       <input type="text" placeholder="Please enter user 1 key" onChange={handleChange1} value={key1}></input>
+      {!key1exists && <p>Please enter a valid key and press Compare</p>}
       <h3>User 2 list</h3>
       {/* input for second users key */}
       <input type="text" placeholder="Please enter user 2 key" onChange={handleChange2} value={key2}></input>
+      {!key2exists && <p>Please enter a valid key and press Compare</p>}
       {/* button that is clicked once the users have completed the input */}
       <button onClick={() => handleCompare(key1, key2)}>Compare</button>
-
+      
+      {
+        user1Info.year !== user2Info.year && <p>Please make sure keys belong to the same year</p>
+      }
+      
+      {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
+      <h3>{user1Info.year}</h3>
       {/* first ul element */}
       <ul>
+        <p>{user1Info.name}</p>
         {/* map that goes through first array and appends each list */}
-        {userList1.map((movie) => {
-          return <li>{movie}</li>
+        {user1Info.list.map((movie, index) => {
+          return <li key={index} className = {movieScore(movie, index)}>{movie}</li>
         })}
       </ul>
+      {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
       {/* second ul element */}
+      <h3>{user2Info.year}</h3>
+      <p>{user2Info.name}</p>
       <ul>
         {/* map that goes through first array and appends each list */}
-        {userList2.map((movie) => {
-          return <li>{movie}</li>
+        {user2Info.list.map((movie, index) => {
+          return <li key={index} className = {movieScore(movie, index)}>{movie}</li>
         })}
       </ul>
+      {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
+      </>}
+      
     </>
   )
 }

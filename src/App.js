@@ -8,6 +8,7 @@ import Ranking from './components/Ranking';
 import MovieDetails from './components/MovieDetails';
 import CompareLists from './components/CompareLists';
 import { useState } from 'react';
+import HelpButton from './components/HelpButton';
 
 // importing the styles
 import './styles/setUp.css';
@@ -38,7 +39,11 @@ function App() {
     <>
     {/* Header component */}
       <Header />
+
+      <HelpButton />
+
       {/* Routes with passed props, that will direct the user to the correct page/component they clicked on */}
+
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/Rankings/:userYear" element={<Ranking userList={userList} movieSlot={movieSlot} setUserList={setUserList} setMovieSlot={setMovieSlot} />} />

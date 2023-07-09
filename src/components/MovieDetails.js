@@ -70,7 +70,7 @@ const MovieDetails = (props) => {
             {/* wrapper and flex container */}
             <div className='wrapper glass flexContainer'>
                 {/* back button container */}
-                <div className="backButton">
+                <div className="backButton detailsBack">
                     <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
                 {/* image container */}
