@@ -158,14 +158,16 @@ const PersonalizedList = (props) => {
   return (
     // wrapper container
     <div className="wrapper persoList">
-      {/* ternary operator - score will be shown here */}
-      {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
       {/* buttons that call functions when user clicks */}
       <button onClick={handleRestart}>Start new game</button>
       <button onClick={handleCompare}>Compare with others</button>
       {/* personal key is appended here with option to copy the key button */}
-      <p>Your personal key is: {personalKey} <button onClick={() => {
-        navigator.clipboard.writeText(personalKey);}}>Copy</button>Copy it and use it compare with friends</p>
+      <p className="pKey">Your personal key is: {personalKey} <button onClick={() => {
+        navigator.clipboard.writeText(personalKey);
+      }}><i className="fa-solid fa-copy"></i></button> </p>
+      <p className="pKey"> Copy it and use it compare with friends</p>
+        {/* ternary operator - score will be shown here */}
+        {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
       {/* first flex container which hold user list choices */}
       <div className="flexContainer">
         <h2>Your List</h2>
@@ -197,6 +199,29 @@ const PersonalizedList = (props) => {
             )
           })}
         </ol>
+      </div>
+      <div className="legendBox glass">
+        <h3 className="legend">Legend</h3>
+        <div className="flex">
+          <div class="color1"></div>
+          <p>Correct: 10pts</p>
+        </div>
+        <div className="flex">
+          <div class="color2"></div>
+          <p>1 spot off: 7pts</p>
+        </div>
+        <div className="flex">
+          <div class="color3"></div>
+          <p>2 spots off: 5pts</p>
+        </div>
+        <div className="flex">
+          <div class="color4"></div>
+          <p>3+ spots off: 1pts</p>
+        </div>
+        <div className="flex">
+          <div class="color5"></div>
+          <p>Incorrect: 0pts</p>
+        </div>
       </div>
     </div>
   )
