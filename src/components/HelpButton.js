@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 
+import '../styles/helpButton.css';
+
 //create a function that will open the pop-up
 function PopUpButton() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div>
-            <button onClick={() => setIsOpen(true)}>
+        <div className="helpDiv">
+            <button className="help" onClick={() => setIsOpen(!isOpen)}>
                 <i className="fa-solid fa-question"></i>
             </button>
 
             {isOpen && (
-                <div>
-                    <p>How to play:</p>
+                <div className={`modalPopUp glass ${isOpen ? "" : "hidden"}`}>
+                    <h3 className="guide">How to play:</h3>
                     <ol>
                         <li>Choose a year and click 'start guessing'.</li>
                         <li>Guess 10 movies based on their highest grossing of the year (most money made!).</li>
@@ -24,9 +26,6 @@ function PopUpButton() {
                         <li>Click 'Start a new game' on the top left of the same page, or compare your list and score with other players' lists of that year.</li>
                         <li>You can also compare lists with other users.</li>    
                     </ol>
-                    <button onClick={() => setIsOpen(false)}>
-                        Close Pop-up
-                    </button>
                 </div>
             )}
         </div>

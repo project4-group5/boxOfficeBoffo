@@ -181,7 +181,7 @@ const CompareLists = (props) => {
       console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
     // app will return the final score out of 100 to user
-    return `Your score is ${score}/100`;
+    return `Score is ${score}/100`;
   }
 
 
@@ -207,15 +207,21 @@ const CompareLists = (props) => {
     }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   return (
     // fragment element
 
     <section className="wrapper">
 
       {/* button which resets the app*/}
-      <button onClick={handleRestart}>Start new game</button>
+      <div className="restart">
+        <button className="start" onClick={handleRestart}>Start new game</button>
+      </div>
 
-      <form action="submit" className="compareForm glass">
+      <form onSubmit={handleSubmit} action="submit" className="compareForm glass">
         <div className="inputs">
           <div className="flexContainer">
             <label>User 1 list:</label>
@@ -241,9 +247,9 @@ const CompareLists = (props) => {
       }
 
       {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
+        <h2>{user1Info.year}</h2>
         <div className="persoList">
           <div className="flexContainer">
-            <h2>{user1Info.year}</h2>
             <h3>{user1Info.name}</h3>
             {/* first ul element */}
             <ul className="glass">
@@ -252,12 +258,12 @@ const CompareLists = (props) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
               })}
             </ul>
-            {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
+            {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user1Info.list)}</h3>}
           </div>
 
           <div className="flexContainer">
             {/* second ul element */}
-            <h2>{user2Info.year}</h2>
+            {/* <h2>{user2Info.year}</h2> */}
             <h3>{user2Info.name}</h3>
             <ul className="glass">
               {/* map that goes through first array and appends each list */}
@@ -265,7 +271,30 @@ const CompareLists = (props) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
               })}
             </ul>
-            {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
+            {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user2Info.list)}</h3>}
+          </div>
+          <div className="legendBox glass">
+            <h3 className="legend">Legend</h3>
+            <div className="flex">
+              <div class="color1"></div>
+              <p>Correct: 10pts</p>
+            </div>
+            <div className="flex">
+              <div class="color2"></div>
+              <p>1 spot off: 7pts</p>
+            </div>
+            <div className="flex">
+              <div class="color3"></div>
+              <p>2 spots off: 5pts</p>
+            </div>
+            <div className="flex">
+              <div class="color4"></div>
+              <p>3+ spots off: 1pts</p>
+            </div>
+            <div className="flex">
+              <div class="color5"></div>
+              <p>Incorrect: 0pts</p>
+            </div>
           </div>
         </div>
       </>}
