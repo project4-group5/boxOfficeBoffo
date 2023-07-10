@@ -38,9 +38,7 @@
     padding: 10px 12px;
 }
 
-.compareScore {
-    text-align: center;
-}
+
 
 .restart {
     text-align: center;
@@ -57,6 +55,7 @@
 
     .persoList .glass {
         padding: 20px;
+        
     }
 
 }

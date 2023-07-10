@@ -9,6 +9,7 @@
 .persoList ol,
 .persoList ul {
     list-style-position: inside;
+    padding: 0;
 }
 
 .persoList .score {
@@ -19,11 +20,14 @@
     width: 48%;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
 }
 
-.points10, .points7, .points5, .points1, .points0 {
+.points10,
+.points7,
+.points5,
+.points1,
+.points0, .noColour {
     margin: 5px 0;
 }
 
@@ -58,7 +62,7 @@
 }
 
 .legendBox {
-    width: 50%;
+    width: 48%;
     margin: 0 auto;
 }
 

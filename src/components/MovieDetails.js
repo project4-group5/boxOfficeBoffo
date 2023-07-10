@@ -66,9 +66,9 @@ const MovieDetails = (props) => {
 
     return(
         // section begins
-        <section className='movieDetails'>
+        <section className="movieDetails wrapper">
             {/* wrapper and flex container */}
-            <div className='wrapper glass flexContainer'>
+            <div className="glass flexContainer">
                 {/* back button container */}
                 <div className="backButton detailsBack">
                     <button alt="Back to gallery" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>

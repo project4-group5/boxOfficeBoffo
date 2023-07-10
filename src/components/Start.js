@@ -39,9 +39,9 @@ const Start = () => {
 
   return (
     // start section begins
-    <section className="start">
+    <section className="start wrapper">
       {/* wrapper container */}
-      <div className="glass wrapper">
+      <div className="glass">
         <p>Game where you rank the highest grossing movies of the summer!</p>
         {/* form begins */}
         <form>

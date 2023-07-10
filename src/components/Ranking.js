@@ -107,9 +107,9 @@ const Ranking = (props) => {
 
    return (
       // section begins
-      <section className="ranking">
+      <section className="wrapper ranking">
          {/* wrapper container begins */}
-         <div className="wrapper glass">
+         <div className="glass">
             <div>
                <h2>Highest grossing movies of {userYear}:</h2>
             </div>

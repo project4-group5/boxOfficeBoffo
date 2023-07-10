@@ -249,10 +249,10 @@ const CompareLists = (props) => {
       {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
         <h2>{user1Info.year}</h2>
         <div className="persoList">
-          <div className="flexContainer">
+          <div className="flexContainer glass">
             <h3>{user1Info.name}</h3>
             {/* first ul element */}
-            <ul className="glass">
+            <ul>
               {/* map that goes through first array and appends each list */}
               {user1Info.list.map((movie, index) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
@@ -261,11 +261,11 @@ const CompareLists = (props) => {
             {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user1Info.list)}</h3>}
           </div>
 
-          <div className="flexContainer">
+          <div className="flexContainer glass">
             {/* second ul element */}
             {/* <h2>{user2Info.year}</h2> */}
             <h3>{user2Info.name}</h3>
-            <ul className="glass">
+            <ul>
               {/* map that goes through first array and appends each list */}
               {user2Info.list.map((movie, index) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
@@ -274,7 +274,7 @@ const CompareLists = (props) => {
             {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user2Info.list)}</h3>}
           </div>
           <div className="legendBox glass">
-            <h3 className="legend">Legend</h3>
+            <h2 className="legend">Legend</h2>
             <div className="flex">
               <div class="color1"></div>
               <p>Correct: 10pts</p>
