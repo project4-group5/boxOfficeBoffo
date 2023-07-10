@@ -5,6 +5,7 @@ import firebase from "../firebase";
 import axios from "axios";
 
 import '../styles/personalizedLists.css'
+import '../styles/compareLists.css'
 
 // Compare list component 
 const CompareLists = (props) => {
@@ -210,18 +211,30 @@ const CompareLists = (props) => {
     // fragment element
 
     <section className="wrapper">
+
       {/* button which resets the app*/}
       <button onClick={handleRestart}>Start new game</button>
-      <label>User 1 list</label>
-      {/* input for first users key */}
-      <input type="text" placeholder="Please enter user 1 key" onChange={handleChange1} value={key1}></input>
-      {!key1exists && <p>Please enter a valid key and press Compare</p>}
-      <label>User 2 list</label>
-      {/* input for second users key */}
-      <input type="text" placeholder="Please enter user 2 key" onChange={handleChange2} value={key2}></input>
-      {!key2exists && <p>Please enter a valid key and press Compare</p>}
-      {/* button that is clicked once the users have completed the input */}
-      <button onClick={() => handleCompare(key1, key2)}>Compare</button>
+
+      <form action="submit" className="compareForm glass">
+        <div className="inputs">
+          <div className="flexContainer">
+            <label>User 1 list:</label>
+            {/* input for first users key */}
+            <input type="text" placeholder="Enter user 1 key" onChange={handleChange1} value={key1}></input>
+            {!key1exists && <p className="direct">Enter a valid key and press compare</p>}
+          </div>
+
+          <div className="flexContainer">
+            <label>User 2 list:</label>
+            {/* input for second users key */}
+            <input type="text" placeholder="Enter user 2 key" onChange={handleChange2} value={key2}></input>
+            {!key2exists && <p className="direct">Enter a valid key and press compare</p>}
+          </div>
+        </div>
+
+        {/* button that is clicked once the users have completed the input */}
+        <button className="compareButton" onClick={() => handleCompare(key1, key2)}>Compare</button>
+      </form>
 
       {
         user1Info.year !== user2Info.year && <p>Please make sure keys belong to the same year</p>
@@ -239,7 +252,7 @@ const CompareLists = (props) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
               })}
             </ul>
-          {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
+            {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user1Info.list)}</h3>}
           </div>
 
           <div className="flexContainer">
@@ -252,7 +265,7 @@ const CompareLists = (props) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
               })}
             </ul>
-          {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
+            {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score">{score(user2Info.list)}</h3>}
           </div>
         </div>
       </>}
