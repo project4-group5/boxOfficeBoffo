@@ -6,7 +6,7 @@
     align-items: stretch;
 }
 
-.persoList ol {
+.persoList ol, .persoList ul {
     list-style-position: inside;
 }
 

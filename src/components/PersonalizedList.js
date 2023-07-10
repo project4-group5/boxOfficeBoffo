@@ -83,7 +83,6 @@ const PersonalizedList = (props) => {
         }
       })
 
-
       // scoring logic
       switch (difference) {
         case 0:

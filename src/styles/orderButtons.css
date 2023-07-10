@@ -20,3 +20,13 @@
 .orderButtons .remove {
     margin: 10px 0 10px 10px;
 }
+
+.order:hover {
+    /* color: #212c32; */
+    color: #80929d;
+}
+
+.order:focus {
+    /* color: #434f56; */
+    color: #80929d;
+}

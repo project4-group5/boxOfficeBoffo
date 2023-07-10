@@ -65,17 +65,17 @@ const MovieCard = (props) => {
         <>
             {/* ternary operator that puts loading icon incase API is slower than the app */}
             {loading ? <div>loading</div> : movieInfo !== []
-                ? (<li className="movieCard">
-                    <div className="imageContainer" onClick={handleClickInfo}>
-                        <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
-                    </div>
-                    <h2>{movieInfo.title}</h2>
-                    <div className="buttonContainer">
-                        <button onClick={handleClickInfo}><i className="fa-solid fa-circle-info"></i></button>
-                        <button onClick={handleClickAdd}><i className="fa-solid fa-plus"></i></button>
-                    </div>
-                </li>)
-                : <></>}
+            ? (<li className="movieCard">
+                <div className="imageContainer" onClick={handleClickInfo}>
+                    <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
+                </div>
+                <h2>{movieInfo.title}</h2>
+                <div className="buttonContainer">
+                    <button onClick={handleClickInfo}><i className="fa-solid fa-circle-info"></i></button>
+                    <button onClick={handleClickAdd}><i className="fa-solid fa-plus"></i></button>
+                </div>
+            </li>)
+            : <></>}        
         </>
     )
 }

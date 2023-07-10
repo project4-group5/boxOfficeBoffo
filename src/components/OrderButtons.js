@@ -49,8 +49,8 @@ const OrderButtons = (props) => {
             <div className='buttonContainer'>
                 {/* make accessible??? sr-only */}
                 {/* ternary operator, which will contain buttons to move up or down */}
-                {props.slot !== 0 && <button id="up" onClick={() => (moveUp(props.slot))}><i className="fa-solid fa-angle-up"></i></button>}
-                {props.slot !== 9 && <button id="down" onClick={() => (moveDown(props.slot))}><i className="fa-solid fa-angle-down"></i></button>}
+                {props.slot !== 0 && <button className='order' id="up" onClick={() => (moveUp(props.slot))}><i className="fa-solid fa-angle-up"></i></button>}
+                {props.slot !== 9 && <button className='order' id="down" onClick={() => (moveDown(props.slot))}><i className="fa-solid fa-angle-down"></i></button>}
             </div>
 
             {/* creating button to delete a movie from the list */}

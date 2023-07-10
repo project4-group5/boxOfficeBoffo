@@ -7,7 +7,7 @@ function PopUpButton() {
     return (
         <div>
             <button onClick={() => setIsOpen(true)}>
-                Open Pop-up
+                <i className="fa-solid fa-question"></i>
             </button>
 
             {isOpen && (
