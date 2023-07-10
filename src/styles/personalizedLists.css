@@ -98,13 +98,18 @@
     width: 100%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
     .persoList .flexContainer {
         width: 100%;
     }
 
     .persoList .glass {
         padding: 20px;
+        width: 100%;
+    }
+
+    .legendBox {
+        width: 100%;
     }
 
 }

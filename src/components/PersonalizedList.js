@@ -162,7 +162,7 @@ const PersonalizedList = (props) => {
       <button onClick={handleRestart}>Start new game</button>
       <button onClick={handleCompare}>Compare with others</button>
       {/* personal key is appended here with option to copy the key button */}
-      <p className="pKey">Your personal key is: {personalKey} <button onClick={() => {
+      <p className="pKey">Your personal key is: {personalKey} <button alt="copy" onClick={() => {
         navigator.clipboard.writeText(personalKey);
       }}><i className="fa-solid fa-copy"></i></button> </p>
       <p className="pKey"> Copy it and use it compare with friends</p>

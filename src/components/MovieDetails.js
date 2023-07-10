@@ -71,7 +71,7 @@ const MovieDetails = (props) => {
             <div className='wrapper glass flexContainer'>
                 {/* back button container */}
                 <div className="backButton detailsBack">
-                    <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
+                    <button alt="Back to gallery" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
                 {/* image container */}
                 <div className="imageContainer">
@@ -84,7 +84,7 @@ const MovieDetails = (props) => {
                     <p><span>Tagline:</span> {movie.tagline}</p>
                     <p><span>Synopsis:</span> {movie.overview}</p>
                     {/* add button */}
-                    <button onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
+                    <button alt="Add to ranking" onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
                 </div>
                 
             </div>{/* wrapper and flex container ends */}
