@@ -16,6 +16,10 @@
 
 .persoList .flexContainer {
     width: 48%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .points10 {
@@ -36,6 +40,51 @@
 
 .points0 {
     color: red;
+}
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.legend {
+    text-align: center;
+}
+
+.legendBox {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.color1 {
+    width: 35px;
+    height: 35px;
+    background-color: green;
+}
+.color2 {
+    width: 35px;
+    height: 35px;
+    background-color: blue;
+}
+.color3 {
+    width: 35px;
+    height: 35px;
+    background-color: purple;
+}
+.color4 {
+    width: 35px;
+    height: 35px;
+    background-color: orange;
+}
+.color5 {
+    width: 35px;
+    height: 35px;
+    background-color: red;
+}
+
+.pKey {
+    text-align: center;
+    width: 100%;
 }
 
 @media (max-width: 500px) {
