@@ -1,3 +1,5 @@
+/* styles for the personalized list and compare lists page */
+
 .persoList {
     display: flex;
     flex-wrap: wrap;
@@ -6,6 +8,7 @@
     align-items: stretch;
 }
 
+/* removing default padding */
 .persoList ol,
 .persoList ul {
     list-style-position: inside;
@@ -23,6 +26,7 @@
 
 }
 
+/* margin for the lists elements */
 .points10,
 .points7,
 .points5,
@@ -31,6 +35,7 @@
     margin: 5px 0;
 }
 
+/* colour classes for each score */
 .points10 {
     background-color: #BAE576;
 }
@@ -66,6 +71,7 @@
     margin: 0 auto;
 }
 
+/* color styles for legend */
 .color1,
 .color2,
 .color3,
@@ -102,6 +108,7 @@
     width: 100%;
 }
 
+/* media queries for smaller screens */
 @media (max-width: 600px) {
     .persoList .flexContainer {
         width: 100%;
