@@ -57,6 +57,7 @@ const CompareLists = (props) => {
         for (let i = 0; i < 10; i++) {
           actualList.push(res.data.results[i].title)
         }
+        console.log(actualList);
         setActualRanking(actualList);
       }
     })
@@ -245,17 +246,13 @@ const CompareLists = (props) => {
         user1Info.year !== user2Info.year && <p>Please make sure keys belong to the same year</p>
       }
 
-      {
-        key1 === key2 && <p>Please make sure to use different keys</p>
-      }
-
-      {key1exists && key2exists && key1 !==key2 && (user1Info.year === user2Info.year) && <>
+      {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
         <h2>{user1Info.year}</h2>
         <div className="persoList">
-          <div className="flexContainer glass">
+          <div className="flexContainer">
             <h3>{user1Info.name}</h3>
             {/* first ul element */}
-            <ul>
+            <ul className="glass">
               {/* map that goes through first array and appends each list */}
               {user1Info.list.map((movie, index) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
@@ -264,11 +261,11 @@ const CompareLists = (props) => {
             {user1Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user1Info.list)}</h3>}
           </div>
 
-          <div className="flexContainer glass">
+          <div className="flexContainer">
             {/* second ul element */}
             {/* <h2>{user2Info.year}</h2> */}
             <h3>{user2Info.name}</h3>
-            <ul>
+            <ul className="glass">
               {/* map that goes through first array and appends each list */}
               {user2Info.list.map((movie, index) => {
                 return <li key={index} className={movieScore(movie, index)}>{movie}</li>
@@ -277,7 +274,7 @@ const CompareLists = (props) => {
             {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user2Info.list)}</h3>}
           </div>
           <div className="legendBox glass">
-            <h2 className="legend">Legend</h2>
+            <h3 className="legend">Legend</h3>
             <div className="flex">
               <div class="color1"></div>
               <p>Correct: 10pts</p>

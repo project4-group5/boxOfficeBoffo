@@ -37,7 +37,7 @@ const Gallery = (props) => {
       }).then((res) => {
          // storing API data into variable
          const newMovieList = res.data.results;
-         console.log(newMovieList);
+
          // for each method that checks each item in array
          props.userList.forEach((userMovie) => {
             // for each method
@@ -82,7 +82,7 @@ const Gallery = (props) => {
          {/* wrapper container begins */}
          <div className="wrapper">
             {/* back button that calls function */}
-            <button alt="Back to ranking" className="backButton galleryBack" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
+            <button className="backButton galleryBack" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
             {/* ternary operator to show loading if the api is slower than the app */}
             {loading 
             ? 
@@ -91,9 +91,9 @@ const Gallery = (props) => {
             <ul className="gallery glass">
                {
                   // mapping through array to append each movie
-                  movieList.map((movie, index) => {
+                  movieList.map((movie) => {
                      return (
-                        <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} key={index} />
+                        <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} />
                      )
                   })
                }
