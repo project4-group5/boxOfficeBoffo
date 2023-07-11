@@ -245,11 +245,7 @@ const CompareLists = (props) => {
         user1Info.year !== user2Info.year && <p>Please make sure keys belong to the same year</p>
       }
 
-      {
-        key1 === key2 && <p>Please make sure to use different keys</p>
-      }
-
-      {key1exists && key2exists && key1 !==key2 && (user1Info.year === user2Info.year) && <>
+      {key1exists && key2exists && (user1Info.year === user2Info.year) && <>
         <h2>{user1Info.year}</h2>
         <div className="persoList">
           <div className="flexContainer glass">
