@@ -86,7 +86,7 @@ const Gallery = (props) => {
             {/* ternary operator to show loading if the api is slower than the app */}
             {loading 
             ? 
-            <>Loading...</> 
+            <i className="fa-solid fa-spinner fa-spin"></i> 
             :            
             <ul className="gallery glass">
                {
