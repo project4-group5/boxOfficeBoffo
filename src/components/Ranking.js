@@ -41,21 +41,26 @@ const Ranking = (props) => {
 
    // function that is called when user want to clear all the selections they've chosen.
    const handleClear = () => {
-      // changing the variable to contain the initial data
-      const newVariable = [
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie",
-         "Click to add movie"
-      ]
-      // storing the variable into the state
-      props.setUserList(newVariable);
+
+      let confirmation = window.confirm("Are you sure you want to delete the list?")
+      if (confirmation) {
+        // changing the variable to contain the initial data
+         const newVariable = [
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie",
+            "Click to add movie"
+         ]
+         // storing the variable into the state
+         props.setUserList(newVariable); 
+      }
+      
    }
 
    // function that is called when user is completed the list and clicked on lock button
