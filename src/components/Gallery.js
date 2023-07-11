@@ -91,9 +91,9 @@ const Gallery = (props) => {
             <ul className="gallery glass">
                {
                   // mapping through array to append each movie
-                  movieList.map((movie) => {
+                  movieList.map((movie, index) => {
                      return (
-                        <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} />
+                        <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} key={index} />
                      )
                   })
                }
