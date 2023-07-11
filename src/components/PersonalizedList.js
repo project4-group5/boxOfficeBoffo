@@ -63,7 +63,6 @@ const PersonalizedList = (props) => {
       for (let i = 0; i < 10; i++) {
         actualList.push(res.data.results[i].title)
       }
-      console.log(actualList);
       setActualRanking(actualList);
     })
   }, [])
@@ -100,7 +99,6 @@ const PersonalizedList = (props) => {
         default:
           score += 1;
       }
-      console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
     // app will return the final score out of 100 to user
     return `Your score is ${score}/100`;
@@ -159,20 +157,20 @@ const PersonalizedList = (props) => {
     // wrapper container
     <div className="wrapper persoList">
       {/* buttons that call functions when user clicks */}
-      <button onClick={handleRestart}>Start new game</button>
-      <button onClick={handleCompare}>Compare with others</button>
+      <button onClick={handleRestart}>New game</button>
+      <button onClick={handleCompare}>Compare</button>
       {/* personal key is appended here with option to copy the key button */}
-      <p className="pKey">Your personal key is: {personalKey} <button onClick={() => {
+      <p className="pKey">Your personal key is: {personalKey} <button alt="copy" onClick={() => {
         navigator.clipboard.writeText(personalKey);
       }}><i className="fa-solid fa-copy"></i></button> </p>
       <p className="pKey"> Copy it and use it compare with friends</p>
         {/* ternary operator - score will be shown here */}
-        {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
+        
       {/* first flex container which hold user list choices */}
-      <div className="flexContainer">
+      <div className="flexContainer glass">
         <h2>Your List</h2>
         {/* ordered list element */}
-        <ol className="glass">
+        <ol>
           {/* mapping through the user array */}
           {personalRanking.map((movie, index) => {
             return (
@@ -183,23 +181,25 @@ const PersonalizedList = (props) => {
             )
           })}
         </ol>
+        {personalRanking && actualRanking && <h3 className="score">{score()}</h3>}
       </div>
       {/* second flex container which hold correct answer list */}
-      <div className="flexContainer">
+      <div className="flexContainer glass">
         <h2>Answer</h2>
         {/* ordered list element */}
-        <ol className="glass">
+        <ol>
           {/* mapping through the user array */}
           {actualRanking.map((movie, index) => {
             return (
               // appending each movie to DOM
-              <li key={index}>
+              <li className="noColour" key={index}>
                 {movie}
               </li>
             )
           })}
         </ol>
       </div>
+
       <div className="legendBox glass">
         <h3 className="legend">Legend</h3>
         <div className="flex">

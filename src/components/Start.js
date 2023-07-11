@@ -14,7 +14,7 @@ const Start = () => {
   const navigate = useNavigate();
 
   // for loop that pushes the years avaiable for the app use into the empty "years" array
-  for (let i = 1975; i < 2024; i++) {
+  for (let i = 1977; i < 2024; i++) {
     years.push(i);
   }
 
@@ -39,9 +39,9 @@ const Start = () => {
 
   return (
     // start section begins
-    <section className="start">
+    <section className="start wrapper">
       {/* wrapper container */}
-      <div className="glass wrapper">
+      <div className="glass">
         <p>Game where you rank the highest grossing movies of the summer!</p>
         {/* form begins */}
         <form>
@@ -50,7 +50,7 @@ const Start = () => {
 
             <select className="years" id="years" name="years" onChange={handleYearChange}>
               {/* base selected option which gives initial instructions */}
-              <option value="choose" selected>Please choose a year</option>
+              <option value="choose" >Please choose a year</option>
               {/* mapping the years array and returning an array of years for user's selection */}
               {years.map((year) => {
                 return (
