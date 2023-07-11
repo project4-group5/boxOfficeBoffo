@@ -48,7 +48,7 @@ const Start = () => {
           <div className="input">
             <label htmlFor="years">Select a year:</label>
 
-            <select className="years" id="years" name="years" value="choose" onChange={handleYearChange}>
+            <select className="years" id="years" name="years" onChange={handleYearChange}>
               {/* base selected option which gives initial instructions */}
               <option value="choose" >Please choose a year</option>
               {/* mapping the years array and returning an array of years for user's selection */}
