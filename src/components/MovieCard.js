@@ -63,7 +63,7 @@ const MovieCard = (props) => {
         // fragment element
         <>
             {/* ternary operator that puts loading icon incase API is slower than the app */}
-            {loading ? <div>loading</div> : movieInfo !== []
+            {loading ? <div><i className="fa-solid fa-spinner fa-spin"></i></div> : movieInfo !== []
                 ? (<li className="movieCard">
                     <div className="imageContainer" onClick={handleClickInfo}>
                         <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
