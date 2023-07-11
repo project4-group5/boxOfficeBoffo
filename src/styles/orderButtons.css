@@ -1,0 +1,32 @@
+.orderButtons {
+    display: flex;
+    flex-direction: row;
+    /* margin: 10px 0; */
+}
+
+.orderButtons .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.orderButtons .buttonContainer button {
+    padding: 0px;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.orderButtons .remove {
+    margin: 10px 0 10px 10px;
+}
+
+.order:hover {
+    /* color: #212c32; */
+    color: #80929d;
+}
+
+.order:focus {
+    /* color: #434f56; */
+    color: #80929d;
+}

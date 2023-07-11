@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap');
+
+.wrapper {
+    margin: 0 auto;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+}
+
+html {
+    font-size: 125%;
+}
+
+/* setting default  */
+body {
+    background-color: #BBE7F5;
+    color: #0A171F;
+    font-family: 'Baloo 2', cursive;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* class for the glass effects styles */
+.glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(7px);
+    border-radius: 40px;
+    padding: 20px;
+    margin: 10px 0;
+}
+
+/* removing extra margin on text*/
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h2 {
+    padding: 10px 0;
+    text-align: center;
+    font-size: clamp(1rem, 5vw, 1.6rem);
+    font-weight: 700;
+}
+
+h3 {
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
+    font-weight: 600;
+}
+
+p {
+    margin: 10px 0;
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
+}
+
+li {
+    font-size: clamp(1rem, 5vw, 1.2rem);
+}
+
+button {
+    /* border: 5px solid #0A171F; */
+    border: none;
+    border-radius: 40px;
+    color: #0A171F;
+    background-color: #99D6EA;
+    padding: 10px 12px;
+    font-size: clamp(0.8rem, 4vw, 1rem);
+    font-family: 'Baloo 2', cursive;
+    font-weight: 500;
+}
+
+button:hover {
+    color: white;
+    background-color: #6798C0;
+}
+
+button:focus {
+    color: white;
+    background-color: #6798C0;
+}
+
+.backButton {
+    position: absolute;
+}
+
+@media (max-width: 500px) {
+    .glass {
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+    .wrapper {
+        width: 95%;
+    }
+}
+
+@media (max-width: 400px) {
+    button {
+        padding: 10px 12px;
+    }
+}
+
+/* Colours
+Yellow - #FDD85D
+White - #FFFDF7
+Pale Blue - #99D6EA
+Mid Blue - #6798C0
+Dark Blue - #0A171F
+*/

@@ -1,0 +1,119 @@
+.persoList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.persoList ol,
+.persoList ul {
+    list-style-position: inside;
+    padding: 0;
+}
+
+.persoList .score {
+    width: 100%;
+}
+
+.persoList .flexContainer {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.points10,
+.points7,
+.points5,
+.points1,
+.points0, .noColour {
+    margin: 5px 0;
+}
+
+.points10 {
+    background-color: #BAE576;
+}
+
+.points7 {
+    background-color: #81C4EF;
+}
+
+.points5 {
+    background-color: #C7A9EF;
+}
+
+.points1 {
+    background-color: #FFEF85;
+}
+
+.points0 {
+    background-color: #FFADC2;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.legend {
+    text-align: center;
+}
+
+.legendBox {
+    width: 48%;
+    margin: 0 auto;
+}
+
+.color1,
+.color2,
+.color3,
+.color4,
+.color5 {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+}
+
+.color1 {
+    background-color: #BAE576;
+}
+
+.color2 {
+    background-color: #81C4EF;
+}
+
+.color3 {
+    background-color: #C7A9EF;
+}
+
+.color4 {
+    background-color: #FFEF85;
+}
+
+.color5 {
+    background-color: #FFADC2;
+}
+
+.pKey {
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .persoList .flexContainer {
+        width: 100%;
+    }
+
+    .persoList .glass {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .legendBox {
+        width: 100%;
+    }
+
+}
