@@ -54,6 +54,10 @@ const MovieDetails = (props) => {
                 api_key: "c7d2bc1af674054e4cbfe886c8424b11",
             }
         }).then((res) => {
+            // setTimeout(()=>{
+            //     setMovieInfo(res.data);
+            // }, 300)
+            console.log(res.data);
             // storing data into state
             setMovie(res.data)
         })
@@ -62,12 +66,12 @@ const MovieDetails = (props) => {
 
     return(
         // section begins
-        <section className="movieDetails wrapper">
+        <section className='movieDetails'>
             {/* wrapper and flex container */}
-            <div className="glass flexContainer">
+            <div className='wrapper glass flexContainer'>
                 {/* back button container */}
                 <div className="backButton detailsBack">
-                    <button alt="Back to gallery" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
+                    <button onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
                 </div>
                 {/* image container */}
                 <div className="imageContainer">
@@ -80,7 +84,7 @@ const MovieDetails = (props) => {
                     <p><span>Tagline:</span> {movie.tagline}</p>
                     <p><span>Synopsis:</span> {movie.overview}</p>
                     {/* add button */}
-                    <button alt="Add to ranking" onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
+                    <button onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
                 </div>
                 
             </div>{/* wrapper and flex container ends */}
