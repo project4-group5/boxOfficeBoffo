@@ -12,7 +12,7 @@ const MovieCard = (props) => {
     const [loading, setLoading] = useState(true);
     // hook variable declaration
     const navigate = useNavigate();
-
+    
     // useEffect hook to check for any changes made
     useEffect(() => {
         // axios call for API data
@@ -31,7 +31,7 @@ const MovieCard = (props) => {
             setMovieInfo(res.data)
             setLoading(false);
         })
-        // dependency array
+    // dependency array
     }, [])
 
     // function that is called when user wants additional movie info
@@ -52,29 +52,30 @@ const MovieCard = (props) => {
         // empty variable declaration
         let year = "";
         // loop that checks 5 times
-        for (let i = 0; i < 4; i++) {
+        for (let i=0; i<4; i++) {
             year += movieInfo.release_date[i];
+            console.log(year);
         }
         // navigate user to correct page
         navigate(`/Rankings/${year}`)
     }
 
-    return (
+    return (   
         // fragment element
         <>
             {/* ternary operator that puts loading icon incase API is slower than the app */}
             {loading ? <div>loading</div> : movieInfo !== []
-                ? (<li className="movieCard">
-                    <div className="imageContainer" onClick={handleClickInfo}>
-                        <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
-                    </div>
-                    <h2>{movieInfo.title}</h2>
-                    <div className="buttonContainer">
-                        <button alt="Info" onClick={handleClickInfo}><i className="fa-solid fa-circle-info"></i></button>
-                        <button alt="Add to ranking" onClick={handleClickAdd}><i className="fa-solid fa-plus"></i></button>
-                    </div>
-                </li>)
-                : <></>}
+            ? (<li className="movieCard">
+                <div className="imageContainer" onClick={handleClickInfo}>
+                    <img src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`} alt={`Poster for ${movieInfo.title}`} />
+                </div>
+                <h2>{movieInfo.title}</h2>
+                <div className="buttonContainer">
+                    <button onClick={handleClickInfo}><i className="fa-solid fa-circle-info"></i></button>
+                    <button onClick={handleClickAdd}><i className="fa-solid fa-plus"></i></button>
+                </div>
+            </li>)
+            : <></>}        
         </>
     )
 }
