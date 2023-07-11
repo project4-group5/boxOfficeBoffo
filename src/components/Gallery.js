@@ -37,7 +37,7 @@ const Gallery = (props) => {
       }).then((res) => {
          // storing API data into variable
          const newMovieList = res.data.results;
-         console.log(newMovieList);
+
          // for each method that checks each item in array
          props.userList.forEach((userMovie) => {
             // for each method
