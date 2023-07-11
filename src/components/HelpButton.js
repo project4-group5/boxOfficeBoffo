@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// import the styles
 import '../styles/helpButton.css';
 
 //create a function that will open the pop-up
@@ -24,7 +25,7 @@ function PopUpButton() {
                         <li>We will give you the correct answers compared to your list. You will receive a score out of 100.</li>
                         <li>You will be given a personal key (i.e.: -NZhJ6pQJ84Gwl86lZpg).</li>
                         <li>Click 'Start a new game' on the top left of the same page, or compare your list and score with other players' lists of that year.</li>
-                        <li>You can also compare lists with other users.</li>    
+                        <li>You can also compare lists with other users.</li>
                     </ol>
                 </div>
             )}

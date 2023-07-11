@@ -1,3 +1,5 @@
+/* Gallery styles */
+
 .gallery {
     list-style: none;
     display: flex;
@@ -9,6 +11,7 @@
 
 }
 
+/* styling back button */
 .galleryBack {
     top: -60px;
 }

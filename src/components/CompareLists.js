@@ -183,7 +183,6 @@ const CompareLists = (props) => {
     return `Score is ${score}/100`;
   }
 
-
   const movieScore = (userMovie, userIndex) => {
     let difference = 100
     actualRanking.forEach((actualMovie, actualIndex) => {
@@ -249,7 +248,7 @@ const CompareLists = (props) => {
         key1 === key2 && <p>Please make sure to use different keys</p>
       }
 
-      {key1exists && key2exists && key1 !==key2 && (user1Info.year === user2Info.year) && <>
+      {key1exists && key2exists && key1 !== key2 && (user1Info.year === user2Info.year) && <>
         <h2>{user1Info.year}</h2>
         <div className="persoList">
           <div className="flexContainer glass">
@@ -276,6 +275,7 @@ const CompareLists = (props) => {
             </ul>
             {user2Info.list.length > 0 && actualRanking.length > 0 && <h3 className="score compareScore">{score(user2Info.list)}</h3>}
           </div>
+          {/* legend box */}
           <div className="legendBox glass">
             <h2 className="legend">Legend</h2>
             <div className="flex">

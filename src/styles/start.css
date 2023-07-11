@@ -1,3 +1,6 @@
+/* start page styles */
+
+/* year select form styles */
 .start form {
     display: flex;
     flex-direction: column;
@@ -5,6 +8,7 @@
     align-items: center;
 }
 
+/* select box */
 .start .years {
     border: none;
     color: #0A171F;

@@ -1,3 +1,5 @@
+/* styles for compare list page */
+
 .compareForm {
     display: flex;
     flex-direction: column;
@@ -14,6 +16,7 @@
     margin-right: 10px;
 }
 
+/* styles for the divs holding each label input pair */
 .inputs {
     display: flex;
     flex-wrap: wrap;
@@ -27,6 +30,7 @@
     margin-bottom: 10px;
 }
 
+/* styling the direction p under the inputs */
 .direct {
     text-align: left;
     font-size: clamp(0.6rem, 3vw, 0.8rem);
@@ -38,8 +42,6 @@
     padding: 10px 12px;
 }
 
-
-
 .restart {
     text-align: center;
 }
@@ -48,6 +50,7 @@
     margin-bottom: 15px;
 }
 
+/* Media queries for  */
 @media (max-width: 600px) {
     .inputs .flexContainer {
         width: 100%;

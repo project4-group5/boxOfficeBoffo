@@ -61,7 +61,7 @@ const Start = () => {
                 );
               })}
             </select>
-            
+
           </div>
           {/* button that starts the app, navigates you to the next component */}
           <button onClick={handleStartClick}>Start Guessing</button>
