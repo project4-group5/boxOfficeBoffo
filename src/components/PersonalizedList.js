@@ -63,7 +63,6 @@ const PersonalizedList = (props) => {
       for (let i = 0; i < 10; i++) {
         actualList.push(res.data.results[i].title)
       }
-      console.log(actualList);
       setActualRanking(actualList);
     })
   }, [])
@@ -100,7 +99,6 @@ const PersonalizedList = (props) => {
         default:
           score += 1;
       }
-      console.log(`user movie is ${userMovie} and difference is ${difference} and score is ${score}`)
     })
     // app will return the final score out of 100 to user
     return `Your score is ${score}/100`;

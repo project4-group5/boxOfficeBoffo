@@ -54,7 +54,6 @@ const MovieCard = (props) => {
         // loop that checks 5 times
         for (let i = 0; i < 4; i++) {
             year += movieInfo.release_date[i];
-            console.log(year);
         }
         // navigate user to correct page
         navigate(`/Rankings/${year}`)

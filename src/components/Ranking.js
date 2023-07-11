@@ -103,7 +103,6 @@ const Ranking = (props) => {
          }
       }     
    }
-   console.log(listEmpty, props.userList);
 
    return (
       // section begins

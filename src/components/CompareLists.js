@@ -57,7 +57,6 @@ const CompareLists = (props) => {
         for (let i = 0; i < 10; i++) {
           actualList.push(res.data.results[i].title)
         }
-        console.log(actualList);
         setActualRanking(actualList);
       }
     })

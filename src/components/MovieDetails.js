@@ -54,10 +54,6 @@ const MovieDetails = (props) => {
                 api_key: "c7d2bc1af674054e4cbfe886c8424b11",
             }
         }).then((res) => {
-            // setTimeout(()=>{
-            //     setMovieInfo(res.data);
-            // }, 300)
-            console.log(res.data);
             // storing data into state
             setMovie(res.data)
         })
