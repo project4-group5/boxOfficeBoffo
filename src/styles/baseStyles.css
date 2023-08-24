@@ -1,5 +1,8 @@
+/* base styles page */
+
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap');
 
+/* wrapper for resticting content on large screens */
 .wrapper {
     margin: 0 auto;
     max-width: 900px;
@@ -7,6 +10,7 @@
     position: relative;
 }
 
+/* setting base font size */
 html {
     font-size: 125%;
 }
@@ -39,6 +43,7 @@ p {
     margin: 0;
 }
 
+/* styles for text */
 h2 {
     padding: 10px 0;
     text-align: center;
@@ -60,8 +65,8 @@ li {
     font-size: clamp(1rem, 5vw, 1.2rem);
 }
 
+/* button styles */
 button {
-    /* border: 5px solid #0A171F; */
     border: none;
     border-radius: 40px;
     color: #0A171F;
@@ -82,10 +87,12 @@ button:focus {
     background-color: #6798C0;
 }
 
+/* position for the back navigation button */
 .backButton {
     position: absolute;
 }
 
+/* media queries for smaller screens */
 @media (max-width: 500px) {
     .glass {
         padding: 10px;

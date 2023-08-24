@@ -106,25 +106,25 @@ const PersonalizedList = (props) => {
 
   // function that calculates the score for each individual movie
   const movieScore = (userMovie, userIndex) => {
-     let difference = 100
-      actualRanking.forEach((actualMovie, actualIndex) => {
-        if (userMovie === actualMovie) {
-          difference = Math.abs(userIndex - actualIndex)
-        }
-      })
-        //  scoring logic
-        switch (difference) {
-        case 0:
-          return "points10"
-        case 1:
-          return "points7"
-        case 2:
-          return "points5"
-        case 100:
-          return "points0"
-        default:
-          return "points1"
+    let difference = 100
+    actualRanking.forEach((actualMovie, actualIndex) => {
+      if (userMovie === actualMovie) {
+        difference = Math.abs(userIndex - actualIndex)
       }
+    })
+    //  scoring logic
+    switch (difference) {
+      case 0:
+        return "points10"
+      case 1:
+        return "points7"
+      case 2:
+        return "points5"
+      case 100:
+        return "points0"
+      default:
+        return "points1"
+    }
   }
 
   // function that is called when user wants to compare list
@@ -164,8 +164,8 @@ const PersonalizedList = (props) => {
         navigator.clipboard.writeText(personalKey);
       }}><i className="fa-solid fa-copy"></i></button> </p>
       <p className="pKey"> Copy it and use it compare with friends</p>
-        {/* ternary operator - score will be shown here */}
-        
+      {/* ternary operator - score will be shown here */}
+
       {/* first flex container which hold user list choices */}
       <div className="flexContainer glass">
         <h2>Your List</h2>
@@ -175,7 +175,7 @@ const PersonalizedList = (props) => {
           {personalRanking.map((movie, index) => {
             return (
               // appending each movie to DOM
-              <li key={index} className = {movieScore(movie, index)}>
+              <li key={index} className={movieScore(movie, index)}>
                 {movie}
               </li>
             )
@@ -200,26 +200,27 @@ const PersonalizedList = (props) => {
         </ol>
       </div>
 
+      {/* compare list */}
       <div className="legendBox glass">
         <h3 className="legend">Legend</h3>
         <div className="flex">
-          <div class="color1"></div>
+          <div className="color1"></div>
           <p>Correct: 10pts</p>
         </div>
         <div className="flex">
-          <div class="color2"></div>
+          <div className="color2"></div>
           <p>1 spot off: 7pts</p>
         </div>
         <div className="flex">
-          <div class="color3"></div>
+          <div className="color3"></div>
           <p>2 spots off: 5pts</p>
         </div>
         <div className="flex">
-          <div class="color4"></div>
+          <div className="color4"></div>
           <p>3+ spots off: 1pts</p>
         </div>
         <div className="flex">
-          <div class="color5"></div>
+          <div className="color5"></div>
           <p>Incorrect: 0pts</p>
         </div>
       </div>

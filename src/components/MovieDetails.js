@@ -18,7 +18,7 @@ const MovieDetails = (props) => {
         // change year to empty string
         let year = "";
         // for loop that checks 5 times
-        for (let i=0; i<4; i++) {
+        for (let i = 0; i < 4; i++) {
             year += movie.release_date[i];
         }
         // navigate user to correct component
@@ -28,7 +28,7 @@ const MovieDetails = (props) => {
     // function that is called when user wants to add movie to the list
     const handleAddClick = () => {
         // spreading variable declaration
-        const copyList = [ ...props.userList ];
+        const copyList = [...props.userList];
         // storing the movie title into the copyList array
         copyList[props.movieSlot] = movie.title;
         // storing copyList data into state
@@ -42,7 +42,7 @@ const MovieDetails = (props) => {
         // navigate user to correct component
         navigate(`/Rankings/${year}`)
     }
-    
+
     // useEffect hook that checks for any changes
     useEffect(() => {
         // axios call
@@ -60,7 +60,7 @@ const MovieDetails = (props) => {
     }, [])
 
 
-    return(
+    return (
         // section begins
         <section className="movieDetails wrapper">
             {/* wrapper and flex container */}
@@ -80,9 +80,9 @@ const MovieDetails = (props) => {
                     <p><span>Tagline:</span> {movie.tagline}</p>
                     <p><span>Synopsis:</span> {movie.overview}</p>
                     {/* add button */}
-                    <button alt="Add to ranking" onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
+                    <button alt="Add to ranking" onClick={handleAddClick}><i className="fa-solid fa-plus"></i></button>
                 </div>
-                
+
             </div>{/* wrapper and flex container ends */}
         </section>// section ends
     )

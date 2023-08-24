@@ -1,14 +1,14 @@
+/* Styling the order buttons for the ranking page */
+
 .orderButtons {
     display: flex;
     flex-direction: row;
-    /* margin: 10px 0; */
 }
 
 .orderButtons .buttonContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
 }
 
 .orderButtons .buttonContainer button {
@@ -21,12 +21,11 @@
     margin: 10px 0 10px 10px;
 }
 
+/* hover effects on up and down reorder buttons */
 .order:hover {
-    /* color: #212c32; */
     color: #80929d;
 }
 
 .order:focus {
-    /* color: #434f56; */
     color: #80929d;
 }

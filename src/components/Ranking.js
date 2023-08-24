@@ -24,7 +24,7 @@ const Ranking = (props) => {
       );
       setListEmpty(isEmpty);
    }, [props.userList]);
-   
+
    const handleClick = (slot) => {
       // storing the specific index chosen by user into the state
       props.setMovieSlot(slot);
@@ -44,7 +44,7 @@ const Ranking = (props) => {
 
       let confirmation = window.confirm("Are you sure you want to delete the list?")
       if (confirmation) {
-        // changing the variable to contain the initial data
+         // changing the variable to contain the initial data
          const newVariable = [
             "Click to add movie",
             "Click to add movie",
@@ -58,9 +58,9 @@ const Ranking = (props) => {
             "Click to add movie"
          ]
          // storing the variable into the state
-         props.setUserList(newVariable); 
+         props.setUserList(newVariable);
       }
-      
+
    }
 
    // function that is called when user is completed the list and clicked on lock button
@@ -72,7 +72,7 @@ const Ranking = (props) => {
       //forbid users to edit the list after lock in button is clicked on
       let isListComplete = true;
       // loop that goes around 10 times
-      for(let i = 0; i < 10; i++) {
+      for (let i = 0; i < 10; i++) {
          // if any of the user slots contain the initial string, then do not continue
          //"i" refers to each individual slot of the userList
          if (props.userList[i] === "Click to add movie") {
@@ -99,14 +99,14 @@ const Ranking = (props) => {
                year: userYear,
                list: props.userList,
                name: userName
-         }
+            }
 
-         // pushing the firebaseEntry object into firebase
-         const dbPush = push(dbRef, firebaseEntry);
-         // then, navigate user to the correct component
-         navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}/${userYear}`);
+            // pushing the firebaseEntry object into firebase
+            const dbPush = push(dbRef, firebaseEntry);
+            // then, navigate user to the correct component
+            navigate(`/PersonalizedList/${dbPush._path.pieces_[0]}/${userYear}`);
          }
-      }     
+      }
    }
 
    return (
@@ -124,13 +124,13 @@ const Ranking = (props) => {
             {/* ordered list element */}
             <ol>
                {
-               // map that appends each movie slot
-               props.userList.map((listItem, index) => {
-                  return (
-                     <li key={index} className={listItem === "Click to add movie" ? null : "movie"}> <p onClick={() => handleClick(index)}>{index + 1}. {listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
-                  )
-                  // {(listItem !== "Click to add movie") && "movie"}
-               })
+                  // map that appends each movie slot
+                  props.userList.map((listItem, index) => {
+                     return (
+                        <li key={index} className={listItem === "Click to add movie" ? null : "movie"}> <p onClick={() => handleClick(index)}>{index + 1}. {listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
+                     )
+                     // {(listItem !== "Click to add movie") && "movie"}
+                  })
                }
             </ol>
             {/* button container */}

@@ -84,20 +84,20 @@ const Gallery = (props) => {
             {/* back button that calls function */}
             <button alt="Back to ranking" className="backButton galleryBack" onClick={handleBackClick}><i className="fa-solid fa-arrow-left"></i></button>
             {/* ternary operator to show loading if the api is slower than the app */}
-            {loading 
-            ? 
-            <i className="fa-solid fa-spinner fa-spin"></i> 
-            :            
-            <ul className="gallery glass">
-               {
-                  // mapping through array to append each movie
-                  movieList.map((movie, index) => {
-                     return (
-                        <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} key={index} />
-                     )
-                  })
-               }
-            </ul>}
+            {loading
+               ?
+               <i className="fa-solid fa-spinner fa-spin"></i>
+               :
+               <ul className="gallery glass">
+                  {
+                     // mapping through array to append each movie
+                     movieList.map((movie, index) => {
+                        return (
+                           <MovieCard id={movie.id} userList={props.userList} movieSlot={props.movieSlot} setUserList={props.setUserList} key={index} />
+                        )
+                     })
+                  }
+               </ul>}
          </div> {/* wrapper container ends */}
       </section>// section ends
    )
