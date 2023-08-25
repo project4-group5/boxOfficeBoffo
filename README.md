@@ -5,6 +5,9 @@ Box Office Boffo is a web game that allows users to guess the top-grossing movie
 Team Members:
 
 [Anya](https://github.com/anya-uwu)
+
 [Miguel](https://github.com/MxCabrera)
+
 [Rafay](https://github.com/RafayShams)
+
 [Silvia](https://github.com/SilviaZlo)
