@@ -35,6 +35,8 @@ const Gallery = (props) => {
             with_original_language: "en",
          },
       }).then((res) => {
+         if (res.request.status === 200) {
+         console.log(res)
          // storing API data into variable
          const newMovieList = res.data.results;
 
@@ -48,6 +50,7 @@ const Gallery = (props) => {
                }
             })
          })
+         
 
          // sorts the movie names alphabetically
          newMovieList.sort((a, b) => {
@@ -67,7 +70,13 @@ const Gallery = (props) => {
          // setting the state with new data
          setMovieList(newMovieList);
          setLoading(false);
-      });
+         } else {
+            throw new Error("This is an error");
+         }
+      }).catch((err) => {
+         console.log(err);
+         alert(err.message)
+      })
       // dependancy array to check only when theres changes occurring in userYear state
    }, [userYear]);
 

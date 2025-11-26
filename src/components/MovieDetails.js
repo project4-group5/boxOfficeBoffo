@@ -80,7 +80,7 @@ const MovieDetails = (props) => {
                     <p><span>Tagline:</span> {movie.tagline}</p>
                     <p><span>Synopsis:</span> {movie.overview}</p>
                     {/* add button */}
-                    <button alt="Add to ranking" onClick={handleAddClick}><i class="fa-solid fa-plus"></i></button>
+                    <button alt="Add to ranking" onClick={handleAddClick}><i className="fa-solid fa-plus"></i></button>
                 </div>
 
             </div>{/* wrapper and flex container ends */}

@@ -32,6 +32,8 @@ const Ranking = (props) => {
       navigate(`/Gallery/${userYear}`);
    }
 
+   
+
    // function that is called when user wants to edit their selection
    const handleEdit = () => {
       // changing the state to the opposite of what it currently is
@@ -127,7 +129,11 @@ const Ranking = (props) => {
                   // map that appends each movie slot
                   props.userList.map((listItem, index) => {
                      return (
-                        <li key={index} className={listItem === "Click to add movie" ? null : "movie"}> <p onClick={() => handleClick(index)}>{index + 1}. {listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
+                        <li key={index} className={listItem === "Click to add movie" ? null : "movie"}> <p tabindex="0" onKeyUp={(event) => {
+                           if (event.key === "Enter") {
+                           handleClick(index)
+                           }
+                        }} onClick={() => handleClick(index)}>{index + 1}. {listItem}</p>{edit && (listItem !== "Click to add movie") && <OrderButtons slot={index} userList={props.userList} setUserList={props.setUserList} />}</li>
                      )
                      // {(listItem !== "Click to add movie") && "movie"}
                   })
